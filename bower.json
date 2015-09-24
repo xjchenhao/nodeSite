@@ -9,7 +9,6 @@
   "dependencies": {
     "bootstrap": "~3.3.5",
     "font-awesome": "~4.4.0",
-    "jquery-ui": "~1.11.4",
     "metisMenu": "~2.1.0",
     "moment": "~2.10.6",
     "qst": "~1.0.6",
