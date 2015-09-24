@@ -45,17 +45,23 @@ block script
     script.
         $('[data-id]').on('click', function () {
             var $this = $(this);
-            $.ajax({
-                type: "DELETE",
-                url: "/admin/manageNav",
-                async: true,
-                dataType: "json",
-                data: {
-                    _id: $this.data("id")
-                },
-                success: function (data) {
-                    $this.parents('tr').remove();
-                    console.log(data);
-                }
-            });
+            if (confirm('确认删除？')) {
+                $.ajax({
+                    type: "DELETE",
+                    url: "/admin/manageNav",
+                    async: true,
+                    dataType: "json",
+                    data: {
+                        _id: $this.data("id")
+                    },
+                    success: function (data) {
+                        if (!data.resultCode) {
+                            alert(data.resultMsg);
+                            return false;
+                        }
+                        $this.parents('tr').remove();
+                        console.log(data);
+                    }
+                });
+            }
         });

@@ -1,3 +1,5 @@
+var errorCatch = require('../../models/errorCatch');
+
 var multiparty = require('multiparty');
 var fs = require('fs');
 var _ = require('underscore');
@@ -161,12 +163,16 @@ function deleteRecord(req, res) {
         }
 
         // 删除记录
-        manageNav.remove({_id: id}, function (err, docs) {
+        manageNav.remove({_id: id}, function (err) {
             if (err) {
-                console.log(err);
+                errorCatch(req, res, err);
+                return false;
             }
-            console.log('删除成功');
-            res.send(docs);
+
+            res.send({
+                resultCode: 1,
+                resultMsg: '删除成功'
+            });
         });
     });
 }
