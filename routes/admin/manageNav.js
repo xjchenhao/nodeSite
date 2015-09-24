@@ -11,7 +11,17 @@ module.exports = function (app) {
 
     app.route('/admin/manageNavList')
         .get(function (req, res) {
-            showRecord(req, res);
+            manageNav.fetch(function (err, manage) {
+                if (err) {
+                    console.log(err);
+                }
+
+                res.render('admin/manageNavList', {
+                    title: '管理平台首页',
+                    manage: manage,
+                    catalogue: manageModule.catalogue
+                });
+            });
         });
 
     app.route('/admin/manageNav/add')
@@ -35,7 +45,32 @@ module.exports = function (app) {
 
     app.route('/admin/manageNav')
         .delete(function (req, res) {
-            deleteRecord(req, res);
+            var id = req.body._id;
+
+            manageNav.findById(id, function (err, docs) {
+
+                // 删除存储的图片
+                if (docs.image) {
+                    var imgPath = './upload/' + docs.image;
+                    fs.unlink(imgPath, function (err) {
+                        if (err) throw err;
+                        console.log('remove ' + imgPath + ' succeed');
+                    });
+                }
+
+                // 删除记录
+                manageNav.remove({_id: id}, function (err) {
+                    if (err) {
+                        errorCatch(req, res, err);
+                        return false;
+                    }
+
+                    res.send({
+                        resultCode: 1,
+                        resultMsg: '删除成功'
+                    });
+                });
+            });
         });
 
     app.route('/admin/manageNav/:id')
@@ -58,7 +93,7 @@ module.exports = function (app) {
 function entryRecord(req, res) {
 
     //判断是否存在图片资源存放目录,不存在则创建
-    if(!fs.existsSync('./upload/images/manageNav/')){
+    if (!fs.existsSync('./upload/images/manageNav/')) {
         fs.mkdirSync('./upload/images/manageNav');
     }
 
@@ -115,7 +150,7 @@ function entryRecord(req, res) {
                     });
 
                     //数据存储后执行
-                    _manage.save(function (err, manage) {
+                    _manage.save(function (err) {
                         if (err) {
                             console.log(err);
                         }
@@ -146,49 +181,3 @@ function entryRecord(req, res) {
         }
     });
 }
-
-// 删除记录
-function deleteRecord(req, res) {
-    var id = req.body._id;
-
-    manageNav.findById(id, function (err, docs) {
-
-        // 删除存储的图片
-        if (docs.image) {
-            var imgPath = './upload/' + docs.image;
-            fs.unlink(imgPath, function (err) {
-                if (err) throw err;
-                console.log('remove ' + imgPath + ' succeed');
-            });
-        }
-
-        // 删除记录
-        manageNav.remove({_id: id}, function (err) {
-            if (err) {
-                errorCatch(req, res, err);
-                return false;
-            }
-
-            res.send({
-                resultCode: 1,
-                resultMsg: '删除成功'
-            });
-        });
-    });
-}
-
-// 显示记录
-function showRecord(req, res) {
-    manageNav.fetch(function (err, manage) {
-        if (err) {
-            console.log(err);
-        }
-
-        res.render('admin/manageNavList', {
-            title: '管理平台首页',
-            manage: manage,
-            catalogue: manageModule.catalogue
-        });
-    });
-}
-
