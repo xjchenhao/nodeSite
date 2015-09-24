@@ -1,2 +1,0 @@
-::ffff:10.0.0.97 - - [24/Sep/2015:16:54:00 +0000] "GET /admin/manageNavList HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.99 Safari/537.36"
-::ffff:10.0.0.97 - - [24/Sep/2015:16:54:01 +0000] "GET /favicon.ico HTTP/1.1" 200 613 "http://10.0.0.97:3000/admin/manageNavList" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.99 Safari/537.36"
