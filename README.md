@@ -9,6 +9,21 @@
 4. 运行`mongod --dbpath=./db --port 27017`启动mangoDB
 5. 另启一个控制台,运行`nodemon app.js`或者`node app.js`(前者可以检测文件更改自动重启服务器)
 
+##框架&工具
+
+###服务端
+1. Express
+2. mongod+mongoose
+3. jade
+...
+
+###客户端
+1. bootstrap
+2. jquery
+3. qst
+4. requireJs
+...
+
 ##实现的功能
 
 1. 后台模块的添加,支持无限级添加
