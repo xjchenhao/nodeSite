@@ -54,6 +54,12 @@ module.exports = function (app) {
 
 // 录入记录
 function entryRecord(req, res) {
+
+    //判断是否存在图片资源存放目录,不存在则创建
+    if(!fs.existsSync('./upload/images/manageNav/')){
+        fs.mkdirSync('./upload/images/manageNav');
+    }
+
     //生成multiparty对象，并配置下载目标路径
     var form = new multiparty.Form({uploadDir: './upload/images/manageNav/'});
 
