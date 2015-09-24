@@ -1,14 +1,14 @@
 #数据库
-db/*
+db/
 
 #依赖模块
-node_modules
+node_modules/
 
 #日志文件
-log/*
+log/
 
 #页面用到的工具and插件
-public/libs
+public/libs/
 
 #上传的资源路径
-upload/*
+upload/
