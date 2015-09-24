@@ -55,6 +55,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'upload')));
 
 //日志:访问记录
+if(!fs.existsSync(__dirname + '/log/')){
+    fs.mkdirSync(__dirname + '/log/');
+}
 var accessLog = fs.createWriteStream(__dirname + '/log/access.log', {flags: 'a'});
 app.use(morgan('combined', {stream: accessLog}));
 
