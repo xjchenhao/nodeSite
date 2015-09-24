@@ -14,7 +14,9 @@ var app = express();
 /*
  * 注意命令行开启mangodb服务:
  * mongod --dbpath=./db --port 27017
+ * ps:把数据库存放在了项目的根目录`bd`文件夹下,要确保`db`文件夹的存在
  * */
+
 mongoose.connect('mongodb://127.0.0.1/manage');
 
 mongoose.connection.on("error", function (error) {
