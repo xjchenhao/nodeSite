@@ -1,0 +1,61 @@
+mixin catalogueNode(catalogue,index)
+    for item,i in catalogue
+        if item.level == index
+            li
+                a(href="#{item.link}")
+                    i(class=item.icon)
+                    | &nbsp;&nbsp;#{item.title}
+                    if catalogue[i+1] && catalogue[i+1].level > item.level
+                        i.fa.fa-angle-right
+                if catalogue[i+1] && catalogue[i+1].level > item.level
+                    ul.nav.nav-second-level.collapse
+                        +catalogueNode(catalogue,index+1)
+
+header.header.navbar.navbar-default.navbar-static-top
+
+    .navbar-header
+        //-logo
+        .navbar-brand
+            a(href="/admin") 管理系统
+
+        //-移动端的侧栏展开键
+        button.navbar-toggle(type="button",data-toggle="collapse",data-target=".navbar-collapse")
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+
+    //-顶部快捷入口
+    nav.nav.navbar-top-links.navbar-right
+        li.dropdown
+            a(href="javascript:;",data-toggle="dropdown")
+                i.fa.fa-user
+                | &nbsp;
+                i.fa.fa-caret-down
+
+            ul.dropdown-menu.dropdown-user
+                li
+                    a(href="javascript:;")
+                        i.fa.fa-user
+                        | &nbsp;&nbsp;User Profile
+                li
+                    a(href="javascript:;")
+                        i.fa.fa-cog
+                        | &nbsp;&nbsp;Settings
+                li.divider
+                li
+                    a(href="/admin/logout")
+                        i.fa.fa-log-out
+                        | &nbsp;&nbsp;Logout
+
+    //-侧栏
+    div.sidebar.navbar-default
+        div.sidebar-nav.navbar-collapse
+            ul#side-menu.nav.in
+                li.sidebar-search
+                    div.input-group.custom-search-form
+                        input.form-control(type="text",placeholder="Search...")
+                        span.input-group-btn
+                            button.btn.btn-default(type="button")
+                                i.fa.fa-search
+                +catalogueNode(catalogue,1)

@@ -1,0 +1,86 @@
+extends ../../layoutAdmin
+block breadcrumb
+    ol.breadcrumb
+        li
+            a(href="/admin")
+                i.fa.fa-home.fa-lg
+                | &nbsp;&nbsp;Home
+        li.active 导航管理
+block content
+    .row
+        .col-sm-12
+            .btn-group.btn-group-sm(role="group",aria-label="...")
+                a.btn.btn-default(href="/admin/system/module/add")
+                    i.fa.fa-plus
+                    | &nbsp;新增
+                button.btn.btn-default(type="button")
+                    i.fa.fa-save
+                    | &nbsp;保存
+                button.btn.btn-default(type="button")
+                    i.fa.fa-check-square-o
+                    | &nbsp;全选
+                button.btn.btn-default(type="button")
+                    i.fa.fa-trash-o
+                    | &nbsp;删除
+    .row.m_t_20
+        .col-sm-12
+            .table-responsive
+                table.table.table-hover.table-striped
+                    thead
+                        tr
+                            th 选择
+                            th 图标
+                            th 标题
+                            th 显示
+                            th 排序
+                            th 操作
+                    tbody
+                        for item in catalogueAll
+                            tr
+                                td
+                                    input(type="checkbox")
+                                td
+                                    i(class=item.icon)
+
+                                - var str='';
+                                - if (item.level>1)
+                                    - for(var i=0;i<item.level;i++)
+                                        - str+='&nbsp;&nbsp;&nbsp;&nbsp;'
+                                td !{str}
+                                    a(href="#{item.link}") ┣ #{item.title}
+                                td
+                                    if item.isShow
+                                        | √
+                                    else
+                                        | ×
+                                td #{item.orderBy}
+                                td
+                                    a(href="/admin/system/module/add?parent_id=#{item.id}") 添加子级
+                                    | &nbsp;&nbsp;&nbsp;&nbsp;
+                                    a(href="/admin/system/module/#{item.id}") 修改
+                                    | &nbsp;&nbsp;&nbsp;&nbsp;
+                                    a(href="javascript:;",data-id="#{item._id}") 删除
+block script
+    script.
+        $('[data-id]').on('click', function () {
+            var $this = $(this);
+            if(confirm('确认删除？')){
+                $.ajax({
+                    type: "DELETE",
+                    url: "/admin/system/module",
+                    async: true,
+                    dataType: "json",
+                    data: {
+                        _id: $this.data("id")
+                    },
+                    success: function (data) {
+                        if(!data.resultCode){
+                            alert(data.resultMsg);
+                            return false;
+                        }
+                        $this.parents('tr').remove();
+                        console.log(data);
+                    }
+                });
+            }
+        });

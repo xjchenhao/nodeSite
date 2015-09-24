@@ -1,0 +1,21 @@
+{
+  "name": "ISMP",
+  "version": "0.0.1",
+  "homepage": "http://10.0.0.3:8888/git/fe/website-manageHub.git",
+  "authors": [
+    "fe@qian360.com"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0",
+    "jquery-ui": "~1.11.4",
+    "metisMenu": "~2.1.0",
+    "moment": "~2.10.6",
+    "qst": "~1.0.6",
+    "requirejs": "~2.1.20"
+  },
+  "ignore": [
+    "**/.*"
+  ]
+}

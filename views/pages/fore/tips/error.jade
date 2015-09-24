@@ -1,0 +1,37 @@
+extends ../../../layoutFore
+
+block style
+    style.
+        .container {
+            margin-top: 30px
+        }
+
+block content
+    .container
+        .row
+            .alert.alert-danger
+                .row
+                    .col-sm-12
+                        h2 #{title}
+                        p
+                            | #{message}&nbsp;&nbsp;
+                            a(title="错误详细",data-toggle="collapse",href="#collapseExample",aria-expanded="false",aria-controls="collapseExample") 更多信息
+                .row
+                    .col-sm-12
+                        .btn.btn-danger#backBtn(title="返回上一页") 返回上一页
+                        .btn.btn-default#refreshBtn(title="刷新重试") 刷新
+        .row
+            .col-sm-12
+                .collapse#collapseExample
+                    for val,key in more
+                        p #{key}: #{val}
+
+block script
+    script.
+        $('#backBtn').on('click', function () {
+            history.go(-1);
+        });
+
+        $('#refreshBtn').on('click', function () {
+            history.go(0);
+        });

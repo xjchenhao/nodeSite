@@ -1,0 +1,37 @@
+doctype
+html
+    head
+        meta(charset="utf-8")
+        meta(name="viewport",content="width=device-width, initial-scale=1")
+        title #{title}
+        include includes/admin/head
+        link(href="/style/admin/base.css",rel="stylesheet")
+        link(href="/style/admin/style.css",rel="stylesheet")
+        block style
+
+    body
+        include includes/admin/header
+        main#page-wrapper
+            if breadcrumb
+                ol.breadcrumb
+                    for item,i in breadcrumb
+                        if i == 0
+                            li
+                                a(href="#{item.link}")
+                                    i.fa.fa-home.fa-lg
+                                    | &nbsp;&nbsp;#{item.title}
+                        else
+                            if i < breadcrumb.length - 1
+                                li
+                                    a(href="#{item.link}")
+                                        | #{item.title}
+                            else
+                                li.active
+                                    | #{item.title}
+            else
+                block breadcrumb
+
+            block content
+        include includes/admin/footer
+        block script
+                

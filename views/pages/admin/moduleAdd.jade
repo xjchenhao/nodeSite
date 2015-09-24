@@ -1,0 +1,87 @@
+extends ../../layoutAdmin
+block style
+    style.
+        .form-horizontal .form-group {
+            margin-right: 0;
+            margin-left: 0;
+        }
+
+block breadcrumb
+    ol.breadcrumb
+        li
+            a(href="/admin")
+                i.fa.fa-home.fa-lg
+                | &nbsp;&nbsp;Home
+        li
+            a(href="/admin/manageNavList")
+                | &nbsp;&nbsp;导航管理
+        li.active 添加
+
+block content
+    ul.nav.nav-tabs
+        li.active
+            a 基本信息
+    .panel.panel-default
+        form.form-horizontal.clearfix#formMain(method="POST",action="/admin/system/module/add")
+            input(type="hidden",name="module[_id]",value="#{module._id}")
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-3.control-label(for="parentNav") 上级导航
+                    .col-sm-2
+                        select#parentNav.form-control(name="module[parent]")
+                            option(value='0') 无父级导航
+                            for catalog in catalogue
+                                -var str='';
+                                -for(var i=0;i<catalog.level;i++)
+                                    -str+='&nbsp;&nbsp;'
+                                -str+='┣'
+                                if catalog.id == module.parent
+                                    option(value=catalog.id,selected) !{str} #{catalog.title}
+                                else
+                                    option(value=catalog.id) !{str} #{catalog.title}
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-3.control-label(for="orderBy") 排序数字
+                    .col-sm-1
+                        input#orderBy.form-control(type="text",name="module[orderBy]",value="#{module.orderBy}")
+                    .col-sm-8
+                        p.form-control-static *&nbsp;数字，越小越向前
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-3.control-label(for="isShow") 是否显示
+                    .col-sm-9
+                        label.control-label
+                            if module.isShow
+                                input#isShow(type="checkbox",name="module[isShow]",value="1",checked)
+                            else
+                                input#isShow(type="checkbox",name="module[isShow]",value="1")
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-3.control-label(for="title") 导航标题
+                    .col-sm-6.col-md-3
+                        input#title.form-control(type="text",name="module[title]",value="#{module.title}")
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-3.control-label(for="icon") 自定义图标
+                    .col-sm-6.col-md-3
+                        input#icon.form-control(type="text",name="module[icon]",value="#{module.icon}")
+                    .col-sm-3.col-md-3
+                        p.form-control-static *&nbsp;iconfont图标样式
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-3.control-label(for="link") 链接地址
+                    .col-sm-6.col-md-3
+                        input#link.form-control(type="text",name="module[link]",value="#{module.link}")
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-3.control-label(for="note") 备注说明
+                    .col-sm-6.col-md-4
+                        textarea#note.form-control(name="module[note]",rows=5) #{module.note}
+                        //input#note.form-control(type="text",name="module[note]",value="#{module._id}")
+
+            .col-sm-2.col-sm-offset-3
+                button.btn.btn-default#submitBtn(type="button") 提交
+
+block script
+    script.
+        require(['page/moduleAdd']);

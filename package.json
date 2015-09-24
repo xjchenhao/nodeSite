@@ -1,0 +1,17 @@
+{
+  "name": "ISMP",
+  "description": "管理平台hub",
+  "version": "0.0.3",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "express-session": "^1.11.3",
+    "jade": "^1.11.0",
+    "mongodb": "^2.0.42",
+    "mongoose": "^4.1.3",
+    "morgan": "^1.6.1",
+    "multiparty": "^4.1.2",
+    "underscore": "^1.8.3"
+  }
+}

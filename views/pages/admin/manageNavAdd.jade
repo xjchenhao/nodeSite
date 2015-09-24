@@ -1,0 +1,65 @@
+extends ../../layoutAdmin
+block style
+    style.
+        .form-horizontal .form-group{
+            margin-right:0;
+            margin-left:0;
+        }
+
+block breadcrumb
+    ol.breadcrumb
+        li
+            a(href="/admin")
+                i.fa.fa-home.fa-lg
+                | &nbsp;&nbsp;Home
+        li
+            a(href="/admin/manageNavList")
+                | &nbsp;&nbsp;导航管理
+        li.active 添加
+
+block content
+    form.form-horizontal#manageNavForm(method="POST",action="/admin/manageNav/add",enctype="multipart/form-data")
+        input(type="hidden",name="_id",value="#{manage._id}")
+        .row
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-2.control-label(for="projectName") 项目名
+                    .col-sm-10
+                        input#projectName.form-control(type="text",name="projectName",value="#{manage.projectName}")
+        .row
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-2.control-label(for="describeCn") 中文描述
+                    .col-sm-10
+                        input#describeCn.form-control(type="text",name="describeCn",value="#{manage.describeCn}")
+        .row
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-2.control-label(for="describeEn") 英文描述
+                    .col-sm-10
+                        input#describeEn.form-control(type="text",name="describeEn",value="#{manage.describeEn}")
+        .row
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-2.control-label(for="link") 超链接
+                    .col-sm-10
+                        input#link.form-control(type="text",name="link",value="#{manage.link}")
+        .row
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-2.control-label(for="orderBy") 排序编号
+                    .col-sm-10
+                        input#orderBy.form-control(type="text",name="orderBy",value="#{manage.orderBy}")
+        .row
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-2.control-label(for="image") 上传图片
+                    .col-sm-10
+                        input#image.form-control(type="file",name="image",value="#{manage.image}",multiple="multiple")
+        .row.text-right
+            .col-sm-12
+                button.btn.btn-default#submitBtn(type="button") 提交
+
+block script
+    script.
+        require(['page/manageNavAdd']);
