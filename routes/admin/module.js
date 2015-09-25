@@ -1,6 +1,8 @@
 var errorCatch = require('../../models/errorCatch');
 
 var manageModule = require('../../models/module');
+
+// 更新模块目录缓存的方法
 var getCatalogue = manageModule.getCatalogue;
 
 var _ = require('underscore');
@@ -8,6 +10,7 @@ var _ = require('underscore');
 module.exports = function (app) {
 
     app.route('/admin/system/module')
+
         .get(function (req, res) {
             getCatalogue().then(function () {
                 res.render('admin/moduleList', {
@@ -18,6 +21,7 @@ module.exports = function (app) {
                 });
             });
         })
+
         .delete(function (req, res) {
             var id = req.body._id;
 
@@ -62,49 +66,33 @@ module.exports = function (app) {
                 });
             });
         })
+
         .post(function (req, res) {
-            var id = req.body.module._id;
             var moduleObj = req.body.module;
             var _module;
-            if (id !== 'undefined') {
-                manageModule.findById(id, function (err, module) {
-                    if (err) {
-                        errorCatch(req, res, err);
-                        return false;
-                    }
 
-                    _module = _.extend(module, moduleObj, {isShow: moduleObj.isShow || false});
-                    _module.save(function (err, docs) {
-                        if (err) {
-                            console.log(err);
-                        }
+            _module = new manageModule({
+                icon: moduleObj.icon,
+                title: moduleObj.title,
+                link: moduleObj.link,
+                isShow: moduleObj.isShow || false,
+                orderBy: moduleObj.orderBy,
+                parent: moduleObj.parent,
+                note: moduleObj.note
+            });
 
-                        res.redirect('/admin/system/module');
-                    });
-                });
-            } else {
-                _module = new manageModule({
-                    icon: moduleObj.icon,
-                    title: moduleObj.title,
-                    link: moduleObj.link,
-                    isShow: moduleObj.isShow || false,
-                    orderBy: moduleObj.orderBy,
-                    parent: moduleObj.parent,
-                    note: moduleObj.note
-                });
+            _module.save(function (err, docs) {
+                if (err) {
+                    errorCatch(req, res, err);
+                    return false;
+                }
 
-                _module.save(function (err, docs) {
-                    if (err) {
-                        errorCatch(req, res, err);
-                        return false;
-                    }
-
-                    res.redirect('/admin/system/module');
-                });
-            }
+                res.redirect('/admin/system/module');
+            });
         });
 
     app.route('/admin/system/module/:id')
+
         .get(function (req, res) {
             var id = req.params.id;
             getCatalogue().then(function () {
