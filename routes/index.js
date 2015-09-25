@@ -6,12 +6,14 @@ module.exports = function (app) {
 
     //判断登录
     app.use('/admin', function (req, res, next) {
-        if (req.path !== '/login') {
-            if (!req.session.loggedIn) {
-                res.redirect('/admin/login');
-                return false;
-            }
-        }
+
+        //
+        //if (req.path !== '/login') {
+        //    if (!req.session.loggedIn) {
+        //        res.redirect('/admin/login');
+        //        return false;
+        //    }
+        //}
 
         next();
     });
