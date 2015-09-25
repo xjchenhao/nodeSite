@@ -91,10 +91,12 @@ module.exports = function (app) {
             });
         });
 
-    app.route('/admin/system/module/:id')
+    app.route('/admin/system/module/update')
 
         .get(function (req, res) {
-            var id = req.params.id;
+
+            var id = req.query.id;  // 获得url上query的id参数
+
             getCatalogue().then(function () {
                 if (id) {
                     manageModule.findById(id, function (err, docs) {
