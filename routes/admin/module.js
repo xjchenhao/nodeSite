@@ -62,7 +62,8 @@ module.exports = function (app) {
                         parent: '',
                         note: ''
                     },
-                    catalogue: manageModule.catalogue
+                    catalogue: manageModule.catalogue,
+                    breadcrumb: manageModule.getBreadcrumb(req)
                 });
             });
         })
@@ -125,7 +126,8 @@ module.exports = function (app) {
                         res.render('admin/moduleAdd', {
                             title: '更新模块',
                             module: docs,
-                            catalogue: manageModule.catalogue
+                            catalogue: manageModule.catalogue,
+                            breadcrumb: manageModule.getBreadcrumb(req)
                         });
                     });
                 }

@@ -26,7 +26,7 @@ block content
                                 td #{item.image}
                                 td #{item.orderBy}
                                 td: a(target="_blank",href="#{item.link}") 查看
-                                td: a(href="../admin/manageNav/#{item._id}") 修改
+                                td: a(href="../admin/manageNav/update?id=#{item._id}") 修改
                                 td
                                     button.btn.btn-danger.del(type="button",data-id="#{item._id}") 删除
     .row.text-left

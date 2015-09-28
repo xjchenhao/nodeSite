@@ -35,7 +35,7 @@ var specialUrlMap = {
 
 manageModule.getBreadcrumb = function (req) {
     var catalogue = manageModule.catalogueAll,
-        url = req.url,
+        url = req.url.split('?')[0],
         arr = [],
 
         findOne = function (id) {   // 根据id返回指定的目录对象

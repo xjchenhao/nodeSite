@@ -75,9 +75,10 @@ module.exports = function (app) {
             });
         });
 
-    app.route('/admin/manageNav/:id')
+    app.route('/admin/manageNav/update')
         .get(function (req, res) {
-            var id = req.params.id;
+
+            var id = req.query.id;  // 获得url上query的id参数
 
             if (id) {
                 manageNav.findById(id, function (err, manage) {
