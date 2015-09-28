@@ -43,7 +43,7 @@ app.use(bodyParser.json()); // 把返回值转成json格式
 //中间件:session设置
 app.use(session({
     secret: 'secret',
-    cookie: { maxAge: 1200000}  //session时长为20秒
+    cookie: {maxAge: 1200000}  //session时长为20秒
 }));
 
 // stylus编译
@@ -57,7 +57,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'upload')));
 
 //日志:访问记录
-if(!fs.existsSync(__dirname + '/log/')){
+if (!fs.existsSync(__dirname + '/log/')) {
     fs.mkdirSync(__dirname + '/log/');
 }
 var accessLog = fs.createWriteStream(__dirname + '/log/access.log', {flags: 'a'});
@@ -68,6 +68,6 @@ var routes = require('./routes');
 app.use(routes(app));
 
 //设置端口号
-app.listen(port,function(){
+app.listen(port, function () {
     console.log('端口号: ' + port);
 });
