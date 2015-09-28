@@ -1,15 +1,15 @@
-mixin catalogueNode(catalogue,index)
+mixin catalogueNode(catalogue,index,parentId)
     for item,i in catalogue
-        if item.level == index
+        if item.level == index && item.parent == parentId
             li
                 a(href="#{item.link}")
                     i(class=item.icon)
                     | &nbsp;&nbsp;#{item.title}
-                    if catalogue[i+1] && catalogue[i+1].level > item.level
+                    if catalogue[i + 1] && catalogue[i + 1].level > item.level
                         i.fa.fa-angle-right
-                if catalogue[i+1] && catalogue[i+1].level > item.level
+                if catalogue[i + 1] && catalogue[i + 1].level > item.level
                     ul.nav.nav-second-level.collapse
-                        +catalogueNode(catalogue,index+1)
+                        +catalogueNode(catalogue,index + 1,item.id)
 
 header.header.navbar.navbar-default.navbar-static-top
 
@@ -58,4 +58,4 @@ header.header.navbar.navbar-default.navbar-static-top
                         span.input-group-btn
                             button.btn.btn-default(type="button")
                                 i.fa.fa-search
-                +catalogueNode(catalogue,1)
+                +catalogueNode(catalogue,1,"0")
