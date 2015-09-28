@@ -10,7 +10,7 @@ manageModule.catalogueAll = []; // 缓存包含隐藏的模块json
 manageModule.isSubset = function (id) {
     var catalogue = manageModule.catalogueAll;
     var isExist = false;
-    catalogue.forEach(function (obj){
+    catalogue.forEach(function (obj) {
         if (obj.parent == id) {
             isExist = true;
             return false;
@@ -20,11 +20,25 @@ manageModule.isSubset = function (id) {
 };
 
 // 生成面包屑数组
+
+// 特殊的url链接映射
+var specialUrlMap = {
+    '/add': {
+        title: '添加',
+        link: 'javascript:;'
+    },
+    '/update': {
+        title: '修改',
+        link: 'javascript:;'
+    }
+};
+
 manageModule.getBreadcrumb = function (req) {
     var catalogue = manageModule.catalogueAll,
+        url = req.url,
         arr = [],
 
-        findOne = function (id) {
+        findOne = function (id) {   // 根据id返回指定的目录对象
             var outputObj = null;
             catalogue.forEach(function (obj) {
                 if (obj.id == id) {
@@ -48,6 +62,11 @@ manageModule.getBreadcrumb = function (req) {
 
         collection = function (id) {    // 递归获得面包屑链接集合
 
+            // 如果没有传当前id跳出函数
+            if (!id) {
+                return false;
+            }
+
             var obj = findOne(id);
 
             arr.push({
@@ -65,9 +84,23 @@ manageModule.getBreadcrumb = function (req) {
             }
         };
 
-    collection(urlGetId(req.url));
+    var specialUrlReg = '';   //  甄别特殊url的正则
 
-    return arr.reverse();
+    for (var urlKey in specialUrlMap) {
+        specialUrlReg = new RegExp('.*' + urlKey);
+        if (specialUrlReg.test(url)) {
+            arr.push({
+                title: specialUrlMap[urlKey].title,
+                link: specialUrlMap[urlKey].link
+            });
+            url=url.replace(urlKey,'');
+        }
+    }
+
+    collection(urlGetId(url));
+
+    // 返回存在面包屑数组,不存在返回undefined
+    return arr.length && arr.reverse();
 };
 
 // 查表更新目录缓存

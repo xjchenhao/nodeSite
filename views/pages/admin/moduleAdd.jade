@@ -13,8 +13,8 @@ block breadcrumb
                 i.fa.fa-home.fa-lg
                 | &nbsp;&nbsp;Home
         li
-            a(href="/admin/manageNavList")
-                | &nbsp;&nbsp;导航管理
+            a(href="/admin/system/module")
+                | 系统管理
         li.active 添加
 
 block content
@@ -77,7 +77,6 @@ block content
                     label.col-sm-3.control-label(for="note") 备注说明
                     .col-sm-6.col-md-4
                         textarea#note.form-control(name="module[note]",rows=5) #{module.note}
-                        //input#note.form-control(type="text",name="module[note]",value="#{module._id}")
 
             .col-sm-2.col-sm-offset-3
                 button.btn.btn-default#submitBtn(type="button") 提交

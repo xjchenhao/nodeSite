@@ -1,27 +1,6 @@
 extends ../../layoutAdmin
-block breadcrumb
-    ol.breadcrumb
-        li
-            a(href="/admin")
-                i.fa.fa-home.fa-lg
-                | &nbsp;&nbsp;Home
-        li.active 导航管理
+
 block content
-    .row
-        .col-sm-12
-            .btn-group.btn-group-sm(role="group",aria-label="...")
-                a.btn.btn-default(href="/admin/system/module/add")
-                    i.fa.fa-plus
-                    | &nbsp;新增
-                button.btn.btn-default(type="button")
-                    i.fa.fa-save
-                    | &nbsp;保存
-                button.btn.btn-default(type="button")
-                    i.fa.fa-check-square-o
-                    | &nbsp;全选
-                button.btn.btn-default(type="button")
-                    i.fa.fa-trash-o
-                    | &nbsp;删除
     .row.m_t_20
         .col-sm-12
             .table-responsive
@@ -60,6 +39,11 @@ block content
                                     a(href="/admin/system/module/update?id=#{item.id}") 修改
                                     | &nbsp;&nbsp;&nbsp;&nbsp;
                                     a(href="javascript:;",data-id="#{item._id}") 删除
+
+    .row.text-left
+        .col-sm-12
+            a.btn.btn-primary(href="/admin/system/module/add") 添加
+
 block script
     script.
         $('[data-id]').on('click', function () {

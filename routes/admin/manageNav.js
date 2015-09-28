@@ -9,7 +9,7 @@ var manageModule = require('../../models/module');
 
 module.exports = function (app) {
 
-    app.route('/admin/manageNavList')
+    app.route('/admin/manageNav')
         .get(function (req, res) {
             manageNav.fetch(function (err, manage) {
                 if (err) {
@@ -19,7 +19,8 @@ module.exports = function (app) {
                 res.render('admin/manageNavList', {
                     title: '管理平台首页',
                     manage: manage,
-                    catalogue: manageModule.catalogue
+                    catalogue: manageModule.catalogue,
+                    breadcrumb: manageModule.getBreadcrumb(req)
                 });
             });
         });
@@ -36,7 +37,8 @@ module.exports = function (app) {
                     orderBy: '',
                     image: ''
                 },
-                catalogue: manageModule.catalogue
+                catalogue: manageModule.catalogue,
+                breadcrumb: manageModule.getBreadcrumb(req)
             });
         })
         .post(function (req, res) {
@@ -82,7 +84,8 @@ module.exports = function (app) {
                     res.render('admin/manageNavAdd', {
                         title: '更新项目',
                         manage: manage,
-                        catalogue: manageModule.catalogue
+                        catalogue: manageModule.catalogue,
+                        breadcrumb: manageModule.getBreadcrumb(req)
                     });
                 });
             }
@@ -155,7 +158,7 @@ function entryRecord(req, res) {
                             console.log(err);
                         }
 
-                        res.redirect('/admin/manageNavList');
+                        res.redirect('/admin/manageNav');
                     });
                 });
             } else {
@@ -175,7 +178,7 @@ function entryRecord(req, res) {
                         console.log(err);
                     }
 
-                    res.redirect('/admin/manageNavList');
+                    res.redirect('/admin/manageNav');
                 });
             }
         }
