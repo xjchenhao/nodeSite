@@ -6,7 +6,7 @@ var manageModule = mongoose.model('module', manageModuleSchema);
 manageModule.catalogue = [];    // 缓存排除隐藏的模块json
 manageModule.catalogueAll = []; // 缓存包含隐藏的模块json
 
-// 判断是否存在子集
+//--------------------------------------------------【判断是否存在子集】
 manageModule.isSubset = function (id) {
     var catalogue = manageModule.catalogueAll;
     var isExist = false;
@@ -19,7 +19,7 @@ manageModule.isSubset = function (id) {
     return isExist;
 };
 
-// 生成面包屑数组
+//--------------------------------------------------【生成面包屑数组】
 
 // 特殊的url链接映射
 var specialUrlMap = {
@@ -33,6 +33,7 @@ var specialUrlMap = {
     }
 };
 
+// 生成面包屑的数组的方法
 manageModule.getBreadcrumb = function (req) {
     var catalogue = manageModule.catalogueAll,
         url = req.url.split('?')[0],
@@ -103,7 +104,7 @@ manageModule.getBreadcrumb = function (req) {
     return arr.length && arr.reverse();
 };
 
-// 查表更新目录缓存
+//--------------------------------------------------【查表更新目录缓存】
 manageModule.getCatalogue = function () {
     var originalObj = null, // 未经处理的查询结果
         level = 1,
