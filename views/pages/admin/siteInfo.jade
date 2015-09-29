@@ -1,0 +1,44 @@
+extends ../../layoutAdmin
+block style
+    style.
+        .form-horizontal .form-group {
+            margin-right: 0;
+            margin-left: 0;
+        }
+block content
+    form.form-horizontal#siteInfoForm(method="POST",action="/admin/system/siteInfo")
+        input(type="hidden",name="_id",value="#{siteInfo._id}")
+        .row
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-2.control-label(for="siteName") 站点名称
+                    .col-sm-10
+                        input#siteName.form-control(type="text",name="siteName",value="#{siteInfo.siteName || ''}")
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-2.control-label(for="companyName") 公司名称
+                    .col-sm-10
+                        input#companyName.form-control(type="text",name="companyName",value="#{siteInfo.companyName || ''}")
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-2.control-label(for="domain") 网站域名
+                    .col-sm-10
+                        input#domain.form-control(type="text",name="domain",value="#{siteInfo.domain || ''}")
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-2.control-label(for="installPath") 安装目录
+                    .col-sm-10
+                        input#installPath.form-control(type="text",name="installPath",value="#{siteInfo.installPath || ''}")
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-2.control-label(for="managePath") 网站管理目录
+                    .col-sm-10
+                        input#managePath.form-control(type="text",name="managePath",value="#{siteInfo.managePath || ''}")
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-2.control-label(for="attachmentPath") 附件上传目录
+                    .col-sm-10
+                        input#attachmentPath.form-control(type="text",name="attachmentPath",value="#{siteInfo.attachmentPath || ''}")
+        .row.text-right
+            .col-sm-12
+                button.btn.btn-default#submitBtn(type="submit") 提交

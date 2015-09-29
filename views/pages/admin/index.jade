@@ -19,20 +19,16 @@ block content
                 .panel-heading 站点信息
                 .panel-body
                     .row
-                        .col-md-4 站点名称：管理平台Hub
-                        .col-md-4 公司名称：杭州乾庄互联网金融服务有限公司
-                        .col-md-4 网站域名：http://10.0.0.3
-                        .col-md-4 安装目录：/
-                        .col-md-4 网站管理目录：/admin
-                        .col-md-4 附件上传目录：/upload
-                        .col-md-4 服务器名称：AY130518163619Z
-                        .col-md-4 服务器IP：121.199.8.204
-                        .col-md-4 Node版本：4.0.30319.1008
-                        .col-md-4 操作系统：Microsoft Windows NT 5.2.3790 Service Pack 2
-                        .col-md-4 IIS环境：Microsoft-IIS/6.0
-                        .col-md-4 服务器端口：80
-                        .col-md-4 目录物理路径：D:\web\wwwroot\dtcmsdemo4\
-                        .col-md-4 系统版本：V1.0.0
+                        .col-md-4 站点名称：#{siteInfo.siteName}
+                        .col-md-4 公司名称：#{siteInfo.companyName}
+                        .col-md-4 网站域名：#{siteInfo.domain}
+                        .col-md-4 安装目录：#{siteInfo.installPath}
+                        .col-md-4 网站管理目录：#{siteInfo.managePath}
+                        .col-md-4 附件上传目录：#{siteInfo.attachmentPath}
+                        .col-md-4 服务器名称：#{siteInfo.hostname}
+                        .col-md-4 服务器IP：#{siteInfo.ip}
+                        .col-md-4 操作系统：#{siteInfo.type}
+                        .col-md-4 系统版本：#{siteInfo.release}
 
 
 block script

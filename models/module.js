@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 var manageModuleSchema = require('../schemas/module');
 var manageModule = mongoose.model('module', manageModuleSchema);
 
-// 输出排序后的目录json
+//--------------------------------------------------【排序后的目录json数据缓存】
+
 manageModule.catalogue = [];    // 缓存排除隐藏的模块json
 manageModule.catalogueAll = []; // 缓存包含隐藏的模块json
 

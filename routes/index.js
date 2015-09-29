@@ -1,19 +1,19 @@
 module.exports = function (app) {
 
     /*
-    * 后台部分
-    * */
+     * 后台部分
+     * */
 
     //判断登录
     app.use('/admin', function (req, res, next) {
 
-        //// todo:注释这个if代码块可以跳过登录的判断,方便开发调试
-        //if (req.path !== '/login') {
-        //    if (!req.session.loggedIn) {
-        //        res.redirect('/admin/login');
-        //        return false;
-        //    }
-        //}
+        // todo:注释这个if代码块可以跳过登录的判断,方便开发调试
+        if (req.path !== '/login') {
+            if (!req.session.loggedIn) {
+                res.redirect('/admin/login');
+                return false;
+            }
+        }
 
         next();
     });
@@ -40,7 +40,7 @@ module.exports = function (app) {
     //管理系统导航前台页面
     require('../routes/fore/manageNav')(app);
 
-    app.get('*', function(req, res){
+    app.get('*', function (req, res) {
         res.render('fore/tips/404', {
             title: 'No Found'
         })

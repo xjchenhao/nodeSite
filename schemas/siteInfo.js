@@ -1,26 +1,13 @@
 var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
-    hostname:String,
-    type:String,
-    platform:String,
-    release:String,
-    ip:String
+    siteName: String,
+    companyName: String,
+    domain: String,
+    installPath: String,
+    managePath: String,
+    attachmentPath: String
 });
-
-
-schema.statics = {
-    findOneData: function (obj, cd) {
-        return this
-            .findOne(obj)
-            .exec(cd)
-    },
-    updateSet: function (conditionsObj,changeObj,callback) {
-        callback = callback || new Function();  // 如果没传回调函数,那也要给它置空,不然update无法执行
-        return this
-            .update(conditionsObj, {$set: changeObj}, callback)
-    }
-};
 
 module.exports = schema;
 

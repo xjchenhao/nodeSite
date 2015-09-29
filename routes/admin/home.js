@@ -4,6 +4,7 @@ var adminUser = require('../../models/adminUser');
 var moment = require('../../public/libs/moment/moment');
 
 var manageModule = require('../../models/module');
+var siteInfo = require('../../models/siteInfo');
 
 module.exports = function (app) {
     app.route('/admin')
@@ -13,6 +14,7 @@ module.exports = function (app) {
                     errorCatch(req, res, err);
                     return false;
                 }
+
                 //渲染页面
                 app.locals.moment = moment;
                 res.render('admin/index', {
@@ -23,13 +25,14 @@ module.exports = function (app) {
                         lastIp: req.session.lastIp,
                         lastTime: req.session.lastTime
                     },
+                    siteInfo: siteInfo.info,
                     catalogue: manageModule.catalogue
                 });
 
             });
         });
 
-// 获得ip地址
+    // 获得ip地址
     function getIp(req) {
         var ipStr = req.headers['x-forwarded-for'] ||
             req.connection.remoteAddress ||
