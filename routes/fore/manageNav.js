@@ -1,7 +1,7 @@
 var manageNav = require('../../models/manageNav');
 
 module.exports = function (app) {
-    app.route('/')
+    app.route(['/','/index.html'])
         .get(function (req, res) {
             manageNav.fetch(function (err, manage) {
                 if (err) {
