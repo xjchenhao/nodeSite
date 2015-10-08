@@ -23,6 +23,6 @@ module.exports = function (req, res, err) {
             resultMsg: '访问的路径不存在!!'
         });
     } else {
-        res.render('fore/tips/error', errObj);
+        res.render('tips/error', errObj);
     }
 };

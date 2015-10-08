@@ -1,13 +1,15 @@
-extends ../../../layoutFore
-
-block style
-    style.
-        .container {
-            margin-top: 30px
-        }
-
-block content
-    .container
+doctype
+html
+    head
+        meta(charset="utf-8")
+        meta(name="viewport",content="width=device-width, initial-scale=1")
+        title #{title}
+        style.
+            .container {
+                margin-top: 30px
+            }
+    body
+        .container
         .row
             .alert.alert-danger
                 .row
@@ -25,8 +27,6 @@ block content
                 .collapse#collapseExample
                     for val,key in more
                         p #{key}: #{val}
-
-block script
     script.
         $('#backBtn').on('click', function () {
             history.go(-1);

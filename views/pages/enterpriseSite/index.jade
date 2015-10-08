@@ -1,0 +1,310 @@
+extends ../../layout/enterpriseSite
+
+block content
+    .wrapper
+        .header
+            .logo
+                a(href='/enterpriseSite/index.html')
+                    img(src='images/enterpriseSite/login.png')
+            .function
+                span
+                    a(href='#') 设为首页
+                span
+                    a(href='#') 加入收藏
+                span
+                    a(href='#') 联系我们
+            .guang
+                img(src='images/enterpriseSite/guang.png')
+        .nav
+            ul#nav
+                li
+                    a.pass(href='index.html') 筑宝首页
+                li
+                    a(href='about.html') 走进筑宝
+                    ul
+                        li
+                            a(href='#') 企业介绍
+                        li
+                            a(href='#') 企业文化
+                        li
+                            a(href='#') 人才战略
+                        li
+                            a(href='#') 合伙伙伴
+                li
+                    a(href='Superiority.html') 筑宝优势1
+                    ul
+                        li
+                            a(href='#') 团队优势
+                        li
+                            a(href='#') 产品优势
+                        li
+                            a(href='#') 整合优势
+                li
+                    a(href='products.html') 产品中心
+                    ul
+                        li
+                            a(href='#') 屋面装饰系统
+                        li
+                            a(href='#') 防水保温系列产品
+                li
+                    a(href='example.html') 工程案例
+                    ul
+                        li
+                            a(href='#') 屋面装饰系统
+                        li
+                            a(href='#') 防水保温系列产品
+                li
+                    a(href='news.html') 新闻中心
+                    ul
+                        li
+                            a(href='#') 企业咨询
+                        li
+                            a(href='#') 行业新闻
+                li
+                    a(href='contact.html') 联系我们
+                    ul
+                        li
+                            a(href='#') 联系我们
+                        li
+                            a(href='#') 加盟商须知
+                        li
+                            a(href='#') 客户服务中心
+        .slide
+            #preview-content-head
+                #preview-slider
+                    #preview-slide-1(style='display:block')
+                        a(href='#')
+                            img(src='images/enterpriseSite/slide/01.jpg', alt='')
+                    #preview-slide-2.preview-hide(style='display:none')
+                        a(href='#')
+                            img(src='images/enterpriseSite/slide/02.jpg', alt='', width='1000', height='300')
+                    #preview-slide-3.preview-hide(style='display:none')
+                        a(href='#')
+                            img(src='images/enterpriseSite/slide/03.jpg', alt='', width='1000', height='300')
+                    #preview-slider-line
+                        ul#preview-slider-holder
+                            li.preview-first
+                                .preview-slider-thumbnail
+                                    a(href='#')
+                                        img#preview-thumbnail-im1(src='images/enterpriseSite/slide/01.jpg')
+                                span
+                                    a(href='#') 客户至上，敬谨谦和，专业高效
+                            li.preview-second
+                                .preview-slider-thumbnail
+                                    a(href='#')
+                                        img#preview-thumbnail-im2(src='images/enterpriseSite/slide/02.jpg', alt='', width='66', height='36')
+                                span
+                                    a(href='#') 创建材行业一流品牌
+                            li.preview-third
+                                .preview-slider-thumbnail
+                                    a(href='#')
+                                        img#preview-thumbnail-im3(src='images/enterpriseSite/slide/03.jpg', alt='', width='66', height='36')
+                                span
+                                    a(href='#') 享受健康生活
+        .newest
+            span
+                a(href='news.html')
+                    img(src='images/enterpriseSite/newsst.gif', width='67', height='24')
+            ul#newest_news
+                li
+                    a(href='newsShow.html') 杭州筑宝建材有限公司诚招英才1
+                li
+                    a(href='newsShow.html') 杭州筑宝建材有限公司诚招英才2
+                li
+                    a(href='newsShow.html') 杭州筑宝建材有限公司诚招英才3
+            .clear
+        .main(style='background-color:#eee;')
+            .sort
+                h2
+                    a(href='products.html') 筑宝防水保温
+                ul
+                    li
+                        a(href='newsShow.html')
+                            img(src='images/enterpriseSite/sort_img.gif')
+                        h3
+                            a(href='newsShow.html', style='color:green') 防水保温1
+                        p 产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品
+                        .clear
+                    li
+                        a(href='newsShow.html')
+                            img(src='images/enterpriseSite/sort_img.gif')
+                        h3
+                            a(href='newsShow.html', style='color:#fe8900') 防水保温1
+                        p 产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品
+                        .clear
+                    li
+                        a(href='newsShow.html')
+                            img(src='images/enterpriseSite/sort_img.gif')
+                        h3
+                            a(href='newsShow.html', style='color:#1667a8') 防水保温1
+                        p 产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品
+                        .clear
+                    .clear
+                h2
+                    a(href='products.html') 德力朗高端屋面系统
+                ul
+                    li
+                        a(href='newsShow.html')
+                            img(src='images/enterpriseSite/sort_img.gif')
+                        h3
+                            a(href='newsShow.html', style='color:#1667a8') 防水保温1
+                        p 产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品
+                        .clear
+                    li
+                        a(href='newsShow.html')
+                            img(src='images/enterpriseSite/sort_img.gif')
+                        h3
+                            a(href='newsShow.html', style='color:green') 防水保温1
+                        p 产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品
+                        .clear
+                    li
+                        a(href='newsShow.html')
+                            img(src='images/enterpriseSite/sort_img.gif')
+                        h3
+                            a(href='newsShow.html', style='color:#fe8900') 防水保温1
+                        p 产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品摘要产品
+                        .clear
+                    .clear
+            //
+              <div class="banner"><a href="#"><img src="images/enterpriseSite/index_banner.gif" /></a></div>
+            .con1
+                .tit
+                    p
+                        a(href='about.html') 更多>>
+                    h2
+                        a(href='about.html') 公司介绍
+                    span(style='color:#3478a4') Absout
+                    .clear
+                .content
+                    img(src='images/enterpriseSite/gs.gif')
+                    p
+                        | 杭州筑宝建材有限公司是一家集研发、生产、营销、安装和售后服务于一体的规模化大型企业，主要以专业化生产和销售防水材料及屋面建材的企业，同时配套销售墙体保温和装饰材料，公司一直致力于为建筑提供系统化材料，为用户提供便捷化服务。筑宝公司一贯
+                        u 秉持"厚德育人、合创共赢"的经营理念
+                        | ，汇聚和培养了一支研发型、服务性的专业优秀团队，拥有专业的技术研发人才以及优秀的生产、营销、管理人才达50余人……
+            .con1
+                .tit
+                    p
+                        a(href='news.html') 更多>>
+                    h2
+                        a(href='news.html') 新闻中心
+                    span(style='color:#fe8900') News
+                    .clear
+                ul
+                    li
+                        span 2013-01-21
+                        a(href='newsShow.html') 筑宝建材诚招英才筑宝建材诚招英才
+                    li
+                        span 2013-01-21
+                        a(href='newsShow.html') 筑宝建材诚招英才筑宝建材诚招英才
+                    li
+                        span 2013-01-21
+                        a(href='newsShow.html') 筑宝建材诚招英才筑宝建材诚招英才
+                    li
+                        span 2013-01-21
+                        a(href='newsShow.html') 筑宝建材诚招英才筑宝建材诚招英才
+                    li
+                        span 2013-01-21
+                        a(href='newsShow.html') 筑宝建材诚招英才筑宝建材诚招英才
+                    li
+                        span 2013-01-21
+                        a(href='newsShow.html') 筑宝建材诚招英才筑宝建材诚招英才
+            .con2
+                .tit
+                    h2
+                        a(href='about.html') 合作伙伴
+                    span(style='color:#67a645') Cooperation
+                    .clear
+                ul
+                    li
+                        a(href='#')
+                            img(src='images/enterpriseSite/fl1.gif')
+                    li
+                        a(href='#')
+                            img(src='images/enterpriseSite/fl1.gif')
+                    li
+                        a(href='#')
+                            img(src='images/enterpriseSite/fl1.gif')
+                    li
+                        a(href='#')
+                            img(src='images/enterpriseSite/fl1.gif')
+                    li
+                        a(href='#')
+                            img(src='images/enterpriseSite/fl1.gif')
+                    li
+                        a(href='#')
+                            img(src='images/enterpriseSite/fl1.gif')
+                    li
+                        a(href='#')
+                            img(src='images/enterpriseSite/fl1.gif')
+                    li
+                        a(href='#')
+                            img(src='images/enterpriseSite/fl1.gif')
+                    .clear
+            .clear
+            .con3
+                .tit
+                    p
+                        a(href='example.html') 更多>>
+                    h2
+                        a(href='example.html') 经典工程案例
+                        span Example
+                    .clear
+                .content
+                    #demo(style='OVERFLOW: hidden;width:977px;align: center;')
+                        table(cellspacing='0', cellpadding='0', align='center', border='0')
+                            tbody
+                                tr
+                                    td#marquePic1(valign='top')
+                                        table(height='130', border='0', cellpadding='0', cellspacing='0')
+                                            tr
+                                                td(width='95', height='110', align='center')
+                                                    a(href='newsShow.html')
+                                                        img(src='images/enterpriseSite/gc.jpg')
+                                                td(width='95', align='center')
+                                                    a(href='newsShow.html')
+                                                        img(src='images/enterpriseSite/gc.jpg')
+                                                td(width='95', align='center')
+                                                    a(href='newsShow.html')
+                                                        img(src='images/enterpriseSite/gc.jpg')
+                                                td(width='95', align='center')
+                                                    a(href='newsShow.html')
+                                                        img(src='images/enterpriseSite/gc.jpg')
+                                                td(width='95', align='center')
+                                                    a(href='newsShow.html')
+                                                        img(src='images/enterpriseSite/gc.jpg')
+                                                td(width='95', align='center')
+                                                    a(href='newsShow.html')
+                                                        img(src='images/enterpriseSite/gc.jpg')
+                                                td(width='95', align='center')
+                                                    a(href='newsShow.html')
+                                                        img(src='images/enterpriseSite/gc.jpg')
+                                            tr
+                                                td(align='center')
+                                                    a(href='newsShow.html')
+                                                td(align='center')
+                                                    a(href='newsShow.html')
+                                                td(align='center')
+                                                    a(href='newsShow.html')
+                                                td(align='center')
+                                                    a(href='newsShow.html')
+                                                td(align='center')
+                                                    a(href='newsShow.html')
+                                                td(align='center')
+                                                    a(href='newsShow.html')
+                                                td(align='center')
+                                                    a(href='newsShow.html')
+                                    td#marquePic2(valign='top')
+    .footer
+        p 客户服务热线：0571-88638018 地址:杭州余杭中泰工业园区
+        p Copyright©杭州筑宝建材有限公司 All Rights Reserved (2012-2013)版权所有 复制必究
+    #divQQbox.QQbox
+        #divOnline.Qlist(style='display:none;')
+            ul
+                li
+                    a(target='_blank', href='http://wpa.qq.com/msgrd?v=3&uin=61896683&site=qq&menu=yes')
+                        img(border='0', src='http://wpa.qq.com/pa?p=2:61896683:47', alt='点击这里给我发消息', title='点击这里给我发消息')
+                li
+                    a(target='_blank', href='http://wpa.qq.com/msgrd?v=3&uin=61896683&site=qq&menu=yes')
+                        img(border='0', src='http://wpa.qq.com/pa?p=2:61896683:47', alt='点击这里给我发消息', title='点击这里给我发消息')
+        #divMenu
+            img.press(src='images/enterpriseSite/floatService.gif', alt='在线客服')

@@ -4,11 +4,11 @@ html
         meta(charset="utf-8")
         meta(name="viewport",content="width=device-width, initial-scale=1")
         title #{title}
-        include includes/admin/head
+        include ../includes/admin/head
         block style
 
     body
-        include includes/admin/header
+        include ../includes/admin/header
         main#page-wrapper
             if breadcrumb
                 ol.breadcrumb
@@ -30,6 +30,6 @@ html
                 block breadcrumb
 
             block content
-        include includes/admin/footer
+        include ../includes/admin/footer
         block script
                 

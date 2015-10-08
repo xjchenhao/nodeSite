@@ -8,7 +8,7 @@ module.exports = function (app) {
                     console.log(err);
                 }
 
-                res.render('fore/manageNav', {
+                res.render('manageNav', {
                     title: '管理平台首页',
                     manage: manage
                 });
