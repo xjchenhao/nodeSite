@@ -1,4 +1,5 @@
 define(function (require, exports, module) {
+    require('libs/bootstrap/dist/js/bootstrap.min');
     //--------------------------------------------------【第三方iconFont】
     require('css!libs/font-awesome/css/font-awesome.min.css');
 

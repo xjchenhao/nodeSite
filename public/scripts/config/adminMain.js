@@ -3,7 +3,12 @@ requirejs.config({
     paths: {
         module: 'module',
         page:'page/admin',
-        libs:'../libs'
+        libs:'../libs',
+        jquery:'../libs/jquery/dist/jquery.min'
+    },
+    shim:{
+        'libs/bootstrap/dist/js/bootstrap.min':['jquery'],
+        'libs/metisMenu/dist/metisMenu.min':['jquery']
     },
     map: {
         '*': {
