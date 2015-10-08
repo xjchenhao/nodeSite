@@ -4,7 +4,7 @@ define(function (require, exports, module) {
 
     //--------------------------------------------------【页面加载状态】
     require('css!libs/pace/themes/blue/pace-theme-minimal.css');
-    var pace = require('libs/pace/pace.min');
+    var pace = require('libs/pace/pace');
     pace.start({
         document: false
     });

@@ -8,6 +8,9 @@ requirejs.config({
     map: {
         '*': {
             css: 'libs/require-css/css'
+        },
+        'libs/pace/pace':{
+            pace:'libs/pace/pace'
         }
     }
 });
