@@ -9,8 +9,8 @@ requirejs.config({
         '*': {
             css: 'libs/require-css/css'
         },
-        'libs/pace/pace':{
-            pace:'libs/pace/pace'
+        'libs/pace/pace.min':{
+            pace:'libs/pace/pace.min'
         }
     }
 });
