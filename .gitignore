@@ -6,6 +6,3 @@ log/
 
 #页面用到的工具and插件
 public/libs/
-
-#上传的资源路径
-upload/
