@@ -1,4 +1,5 @@
 define(function (require, exports, module) {
+    require('jquery');
 
     //--------------------------------------------------【根据url识别父级导航】
     var hrefParameter=require('module/href-parameter'),

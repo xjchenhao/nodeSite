@@ -1,4 +1,6 @@
 define(function (require, exports, module) {
+    require('jquery');
+
      var Verifyfrom=require('module/verifyfrom');
 
     var verifyfrom=new Verifyfrom({
