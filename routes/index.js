@@ -41,7 +41,7 @@ module.exports = function (app) {
     require('../routes/fore/enterpriseSite')(app);
 
     //管理系统导航
-    require('../routes/fore/manageNav')(app);
+    require('../routes/project/manageNav')(app);
 
     //项目帮助
     require('../routes/project/help')(app);
