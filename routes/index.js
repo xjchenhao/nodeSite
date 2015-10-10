@@ -43,6 +43,9 @@ module.exports = function (app) {
     //管理系统导航
     require('../routes/fore/manageNav')(app);
 
+    //项目帮助
+    require('../routes/project/help')(app);
+
     app.get('*', function (req, res) {
         res.render('tips/404', {
             title: 'No Found'
