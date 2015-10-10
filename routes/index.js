@@ -33,6 +33,9 @@ module.exports = function (app) {
     //存储平台信息
     require('../routes/admin/siteInfo')(app);
 
+    //项目描述修改
+    require('../routes/admin/describe')(app);
+
     /*
      * 前台部分
      * */
