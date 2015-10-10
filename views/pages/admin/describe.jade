@@ -3,14 +3,13 @@ block style
     link(href="//cdn.jsdelivr.net/editor/0.1.0/editor.css",rel="stylesheet")
 
 block content
-    .row
-        .editor-wrapper
-            input.title(type='text', placeholder='Title')
-            textarea#editor(placeholder='Content here ....')
-
+    .editor-wrapper
+        //input.title(type='text', placeholder='Title')
+        textarea#editor(placeholder='Content here ....') #{doc}
+    //input#markdownDoc(type='hidden',value='#{doc}')
 block script
     script.
-        require(['module/markdown-editor'],function(Editor){
+        require(['module/markdown-editor'], function (Editor) {
             var editor = new Editor();
             editor.render();
         });
