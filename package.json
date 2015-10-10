@@ -15,5 +15,9 @@
     "multiparty": "^4.1.2",
     "stylus": "^0.52.4",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "color": "^0.10.1",
+    "gulp": "^3.9.0"
   }
 }
