@@ -1,12 +1,12 @@
 extends ../../layout/admin
 block style
-    link(href="//cdn.jsdelivr.net/editor/0.1.0/editor.css",rel="stylesheet")
+    link(href="/libs/editor/paper.css",rel="stylesheet")
+    link(href="/libs/editor/editor.css",rel="stylesheet")
+    link(href="/libs/editor/vendor/icomoon/style.css",rel="stylesheet")
 
 block content
     .editor-wrapper
-        //input.title(type='text', placeholder='Title')
         textarea#editor(placeholder='Content here ....') #{doc}
-    //input#markdownDoc(type='hidden',value='#{doc}')
 block script
     script.
         require(['module/markdown-editor'], function (Editor) {
