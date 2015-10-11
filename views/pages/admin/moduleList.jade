@@ -59,25 +59,27 @@ block content
 
 block script
     script.
-        $('[data-id]').on('click', function () {
-            var $this = $(this);
-            if(confirm('确认删除？')){
-                $.ajax({
-                    type: "DELETE",
-                    url: "/admin/system/module",
-                    async: true,
-                    dataType: "json",
-                    data: {
-                        _id: $this.data("id")
-                    },
-                    success: function (data) {
-                        if(!data.resultCode){
-                            alert(data.resultMsg);
-                            return false;
+        require(['jquery'], function () {
+            $('[data-id]').on('click', function () {
+                var $this = $(this);
+                if (confirm('确认删除？')) {
+                    $.ajax({
+                        type: "DELETE",
+                        url: "/admin/system/module",
+                        async: true,
+                        dataType: "json",
+                        data: {
+                            _id: $this.data("id")
+                        },
+                        success: function (data) {
+                            if (!data.resultCode) {
+                                alert(data.resultMsg);
+                                return false;
+                            }
+                            $this.parents('tr').remove();
+                            console.log(data);
                         }
-                        $this.parents('tr').remove();
-                        console.log(data);
-                    }
-                });
-            }
+                    });
+                }
+            });
         });
