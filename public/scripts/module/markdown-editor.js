@@ -5,7 +5,7 @@
             return factory(root, marked, {});
         });
     } else {
-        root.hrefParameter = factory(root, {});
+        root.Editor = factory(root, {});
     }
 })(this, function (root, marked) {
 
@@ -63,7 +63,6 @@
      * Default markdown render.
      */
     Editor.markdown = function (text) {
-        console.log(marked || window.marked);
         if (marked || window.marked) {
             // use marked as markdown parser
             return marked(text);
