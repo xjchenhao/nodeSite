@@ -50,9 +50,14 @@ module.exports = function (app) {
     require('../routes/project/help')(app);
 
     app.get('*', function (req, res) {
-        res.render('tips/404', {
-            title: 'No Found'
-        })
+        var regNotHtml = /.*\.(jpg|png|gif|js|css|eot|woff|ttf|svg)/i;
+
+        // 如果是非html文件的请求找不到,返回404
+        if (!regNotHtml.test(req.url)) {
+            res.render('tips/404', {
+                title: 'No Found'
+            })
+        }
     });
 
     return function (req, res, next) {
