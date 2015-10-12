@@ -1,12 +1,17 @@
-extends ../../layout/admin
+extends ../../../layout/admin
 block style
     link(href="/libs/editor/paper.css",rel="stylesheet")
     link(href="/libs/editor/editor.css",rel="stylesheet")
     link(href="/libs/editor/vendor/icomoon/style.css",rel="stylesheet")
 
 block content
-    .editor-wrapper
-        textarea#editor(placeholder='Content here ....') #{doc}
+    .row
+        .col-sm-12
+            .editor-wrapper
+                textarea#editor(placeholder='Content here ....') #{doc}
+    .row.text-left
+        .col-sm-12
+            a.btn.btn-primary 提交
 block script
     script.
         require(['module/markdown-editor'], function (Editor) {
