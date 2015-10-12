@@ -37,4 +37,13 @@ define(function (require, exports, module) {
             $('#page-wrapper').css('min-height', (height) + 'px');
         }
     }).trigger('resize');
+
+    //--------------------------------------------------【根据url展开侧栏导航】
+    var url = window.location;
+    var element = $('#side-menu a').filter(function() {
+        return this.href == url || url.href.indexOf(this.href) == 0;
+    }).addClass('active').parent().parent().addClass('in').parent();
+    if (element.is('li')) {
+        element.addClass('active');
+    }
 });
