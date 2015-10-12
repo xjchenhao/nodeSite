@@ -17,7 +17,7 @@ img{border:0}
 	_top:240px;
 	padding-bottom:5px; 
 	width:100%; 
-	background-image: url('../Image/slide/bg.png');
+	background-image: url('../../images/enterpriseSite/slide/bg.png');
 	background-repeat: repeat;
 }
 #preview-content-head #preview-slider-line{
