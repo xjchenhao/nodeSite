@@ -7,14 +7,19 @@ block style
 block content
     .row
         .col-sm-12
-            .editor-wrapper
-                textarea#editor(placeholder='Content here ....') #{doc}
+            form#describeForm(method="POST",action="/admin/describe")
+                .editor-wrapper
+                    textarea#editor(name="editor",placeholder='Content here ....') #{doc}
     .row.text-left
         .col-sm-12
-            a.btn.btn-primary 提交
+            a.btn.btn-primary#submitBtn 提交
 block script
     script.
-        require(['module/markdown-editor'], function (Editor) {
+        require(['jquery','module/markdown-editor'], function (abc,Editor) {
             var editor = new Editor();
             editor.render();
+
+            $('#submitBtn').on('click',function(){
+                $('#describeForm').submit();
+            });
         });
