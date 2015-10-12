@@ -7,7 +7,7 @@ var fs=require("fs");
 module.exports = function (app) {
     app.route('/admin/describe')
         .get(function (req, res) {
-            res.render('project/admin/describe', {
+            res.render('admin/project/describe', {
                 title: '项目描述',
                 doc:fs.readFileSync("README.md","utf-8"),
                 catalogue: manageModule.catalogue,

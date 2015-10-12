@@ -29,7 +29,7 @@ module.exports = function (app) {
                     console.log(err);
                 }
 
-                res.render('project/admin/manageNavList', {
+                res.render('admin/project/manageNavList', {
                     title: '项目导航',
                     manage: manage,
                     catalogue: manageModule.catalogue,
@@ -40,7 +40,7 @@ module.exports = function (app) {
 
     app.route('/admin/manageNav/add')
         .get(function (req, res) {
-            res.render('project/admin/manageNavAdd', {
+            res.render('admin/project/manageNavAdd', {
                 title: '添加项目',
                 manage: {
                     projectName: '',
@@ -95,7 +95,7 @@ module.exports = function (app) {
 
             if (id) {
                 manageNav.findById(id, function (err, manage) {
-                    res.render('admin/manageNavAdd', {
+                    res.render('admin/project/manageNavAdd', {
                         title: '更新项目',
                         manage: manage,
                         catalogue: manageModule.catalogue,
