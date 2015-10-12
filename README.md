@@ -22,8 +22,9 @@
 ###客户端
 1. bootstrap
 2. jquery
-3. qst
-4. requireJs
+3. stylus
+4. qst
+5. requireJs
 
 ...
 
@@ -56,3 +57,4 @@
 8. 后台动态生成`面包屑`
 9. 页面响应式布局
 10. 站点信息的自动获取和填写
+11. markdown修改项目描述
