@@ -52,7 +52,7 @@ body {
   .sidebar-search {
     padding: 15px;
     .btn{
-      outline: 0;
+      outline: 0
     }
   }
   ul li {
@@ -65,6 +65,14 @@ body {
       }
       .fa-angle-right{
         float: right
+      }
+    }
+    &.active{
+      &>a>.fa-angle-right{
+        $transform(rotate(90deg));
+      }
+      &>ul{
+        display: block
       }
     }
   }
