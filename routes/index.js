@@ -31,7 +31,7 @@ module.exports = function (app) {
     require('../routes/admin/siteInfo')(app);
 
     //企业站路由
-    require('../routes/fore/enterpriseSite')(app);
+    require('../routes/enterpriseSite/index')(app);
 
     //项目导航
     require('../routes/project/manageNav')(app);
