@@ -7,13 +7,13 @@ module.exports = function (app) {
     //判断登录
     app.use('/admin', function (req, res, next) {
 
-        //// todo:注释这个if代码块可以跳过登录的判断,方便开发调试
-        //if (req.path !== '/login') {
-        //    if (!req.session.loggedIn) {
-        //        res.redirect('/admin/login');
-        //        return false;
-        //    }
-        //}
+        // todo:注释这个if代码块可以跳过登录的判断,方便开发调试
+        if (req.path !== '/login') {
+            if (!req.session.loggedIn) {
+                res.redirect('/admin/login');
+                return false;
+            }
+        }
 
         next();
     });
@@ -29,6 +29,9 @@ module.exports = function (app) {
 
     //存储平台信息
     require('../routes/admin/siteInfo')(app);
+
+    //密码管理
+    require('../routes/admin/password')(app);
 
     //企业站路由
     require('../routes/enterpriseSite/index')(app);

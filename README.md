@@ -20,7 +20,7 @@
 ...
 
 ###客户端
-1. bootstrap
+1. bootstrap v3
 2. jquery
 3. stylus
 4. qst
