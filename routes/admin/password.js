@@ -1,7 +1,11 @@
+var crypto = require('crypto');
+
 var errorCatch = require('../../models/errorCatch');
 var adminUser = require('../../models/adminUser');
 
 var manageModule = require('../../models/module');
+
+var _ = require('underscore');
 
 module.exports = function (app) {
 
@@ -13,9 +17,10 @@ module.exports = function (app) {
                 breadcrumb: manageModule.getBreadcrumb(req)
             });
         })
+
         .post(function(req,res){
             var bodyObj=req.body;
-            adminUser.findOne({userName: req.session.loggedIn, password: bodyObj.passwordOld}, function (err, doc) {
+            adminUser.findOne({userName: req.session.loggedIn, password: crypto.createHash('md5').update(bodyObj.passwordOld).digest('hex')}, function (err, doc) {
                 if (err) {
                     errorCatch(req, res, err);
                     return false;
@@ -30,11 +35,24 @@ module.exports = function (app) {
                     return false;
                 }
 
-                delete req.session.loggedIn;
-                res.send({
-                    resultCode: 1,
-                    resultMsg: '密码修改成功'
+                adminUser = _.extend(doc,{'password':crypto.createHash('md5').update(bodyObj.passwordNew1).digest('hex')});
+                adminUser.save(function (err) {
+                    if (err) {
+                        console.log(err);
+                    }
+
+                    delete req.session.loggedIn;
+                    res.send({
+                        resultCode: 1,
+                        resultMsg: '密码修改成功'
+                    });
                 });
+
+                //delete req.session.loggedIn;
+                //res.send({
+                //    resultCode: 1,
+                //    resultMsg: '密码修改成功'
+                //});
             });
         });
 };

@@ -1,10 +1,10 @@
-var os = require('os');
+var crypto = require('crypto');
 var adminUser = require('../../models/adminUser');
 
 module.exports = function (app) {
     app.route('/admin/login')
         .post(function (req, res) {
-            adminUser.findOneData({userName: req.body.user.name, password: req.body.user.password}, function (err, doc) {
+            adminUser.findOneData({userName: req.body.user.name, password: crypto.createHash('md5').update(req.body.user.password).digest('hex')}, function (err, doc) {
                 if (err) return next(err);
                 if (!doc) return res.send('<p>用户名或密码错误</p>');
 
