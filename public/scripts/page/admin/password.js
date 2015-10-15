@@ -52,6 +52,7 @@ define(function (require, exports, module) {
                     return false;
                 }
                 alert(data.resultMsg);
+                location.href='/admin/login'
             }
         });
     });

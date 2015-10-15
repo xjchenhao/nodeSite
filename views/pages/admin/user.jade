@@ -1,0 +1,131 @@
+extends ../../layout/admin
+block style
+    style.
+        .table > tbody > tr > td {
+            vertical-align: middle
+        }
+
+block content
+    .row
+        .col-sm-12
+            .panel.panel-default
+                .panel-heading  用户管理
+                .panel-body
+                    .col-sm-12.col-md-3.col-lg-2
+                        .list-group
+                            a.list-group-item.active(href='javascript:;')
+                                | 未分组
+                                span.badge 123
+                            a.list-group-item(href='javascript:;') 管理员
+                            a.list-group-item(href='javascript:;') 浏览者
+                            a.list-group-item(href='###',data-toggle="modal",data-target="#modifyModal",data-title="添加用户组",data-body="addUserGroup")
+                                i.fa.fa-plus
+                                | &nbsp;添加用户组
+                    .col-sm-12.col-md-9.col-lg-10
+                        .panel.panel-default
+                            .panel-heading
+                                span.panel-title 未分组&nbsp;&nbsp;
+                                a(href='###',data-toggle="modal",data-target="#modifyModal",data-title="重命名用户组",data-body="userGroupRename") 重命名
+                                | &nbsp;&nbsp;
+                                a(href='javascript:;') 删除
+                            .panel-body
+                                .row
+                                    .col-sm-12.clear
+                                        .f_l
+                                            label.m_r_10
+                                                input(type="checkbox")
+                                                | &nbsp;&nbsp;全选
+                                            span 批量分组 :
+                                            select.form-control.dis_ib.w_a.m_r_10
+                                                option 添加到
+                                        .f_r
+                                            //| 123
+                                .row.m_t_20
+                                    .col-sm-12
+                                        table.table
+                                            tbody
+                                                tr
+                                                    td
+                                                        label
+                                                            input(type="checkbox")
+                                                            | &nbsp;&nbsp;我是用户名
+                                                    td.text-right
+                                                        select.form-control.dis_ib.w_a.m_r_10
+                                                            option 未分组
+                                                        a.btn.btn-default.m_r_10(href='javascript:;',data-toggle="modal",data-target="#modifyModal",data-title="备注",data-body="userNote") 备注
+                                                        a(href='javascript:;') 删除
+                                                tr
+                                                    td
+                                                        label
+                                                            input(type="checkbox")
+                                                            | &nbsp;&nbsp;我是用户名
+                                                    td.text-right
+                                                        select.form-control.dis_ib.w_a.m_r_10
+                                                            option 未分组
+                                                        a.btn.btn-default.m_r_10(href='javascript:;',data-toggle="modal",data-target="#modifyModal",data-title="备注",data-body="userNote") 备注
+                                                        a(href='javascript:;') 删除
+                                                tr
+                                                    td
+                                                        label
+                                                            input(type="checkbox")
+                                                            | &nbsp;&nbsp;我是用户名
+                                                    td.text-right
+                                                        select.form-control.dis_ib.w_a.m_r_10
+                                                            option 未分组
+                                                        a.btn.btn-default.m_r_10(href='javascript:;',data-toggle="modal",data-target="#modifyModal",data-title="备注",data-body="userNote") 备注
+                                                        a(href='javascript:;') 删除
+                        .row
+                            .col-sm-12
+                                a.btn.btn-primary(href='###',data-toggle="modal",data-target="#modifyModal",data-title="添加新用户",data-body="addUser") 添加新用户
+
+    #modifyModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modifyModalLabel')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') ×
+                    h4#modifyModalLabel.modal-title
+                #addUserGroup.modal-body.hidden
+                    form
+                        .form-group
+                            label.control-label(for='recipient-name') 组名:
+                            input#recipient-name.form-control(type='text')
+                #addUser.modal-body.hidden
+                    form
+                        .form-group
+                            label.control-label(for='recipient-name') 用户名:
+                            input#recipient-name.form-control(type='text')
+                        .form-group
+                            label.control-label(for='recipient-name') 密码:
+                            input#recipient-name.form-control(type='password')
+                        .form-group
+                            label.control-label(for='recipient-name') 确认密码:
+                            input#recipient-name.form-control(type='password')
+                        .form-group
+                            label.control-label(for='message-text') 描述:
+                            textarea#message-text.form-control(rows="3")
+                #userNote.modal-body.hidden
+                    form
+                        .form-group
+                            label.control-label(for='message-text') 描述:
+                            textarea#message-text.form-control(rows="3")
+                #userGroupRename.modal-body.hidden
+                    form
+                        .form-group
+                            label.control-label(for='recipient-name') 组名:
+                            input#recipient-name.form-control(type='text')
+                .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                    button.btn.btn-primary(type='button') Submit
+
+block script
+    script.
+        require(['jquery'], function () {
+            $('#modifyModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                $(this)
+                        .find('.modal-title').text(button.data('title'))
+                        .end().find('.modal-body').addClass('hidden');
+                $('#' + button.data('body')).removeClass('hidden');
+            });
+        });
