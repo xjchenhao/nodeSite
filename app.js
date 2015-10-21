@@ -69,5 +69,5 @@ app.use(routes(app));
 
 //设置端口号
 app.listen(port, function () {
-    console.log('端口号: ' + port);
+    console.log('项目启动成功, 端口号: ' + port);
 });
