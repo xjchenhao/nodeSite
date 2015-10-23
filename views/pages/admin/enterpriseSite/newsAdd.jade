@@ -1,0 +1,71 @@
+extends ../../../layout/admin
+block style
+    link(href="/libs/editor/paper.css",rel="stylesheet")
+    link(href="/libs/editor/editor.css",rel="stylesheet")
+    link(href="/libs/editor/vendor/icomoon/style.css",rel="stylesheet")
+    style.
+        .form-horizontal .form-group {
+            margin-right: 0;
+            margin-left: 0;
+        }
+
+block content
+    .row
+        .col-sm-12
+            .panel.panel-default
+                .panel-body
+                    form.form-horizontal.clearfix#formMain(method="POST",action="/admin/enterpriseSite/news/add")
+                        .form-group.col-sm-12
+                            .row
+                                .panel.panel-default
+                                    .panel-heading 编辑文章
+                                    .panel-body
+                                        input(type="hidden",name="id",value="123")
+                                        .editor-wrapper
+                                            input.title(type="text",placeholder="请输入新闻标题 ...")
+                                            textarea#editor(name="editor",placeholder='Content here ....') #{doc}
+                            .row.m_t_20
+                                .panel.panel-default
+                                    .panel-heading 其它设置
+                                    .panel-body
+                                        .form-group.col-sm-12
+                                            label.col-sm-2.control-label(for="title") 显示
+                                            .col-sm-6.col-md-3
+                                                input#isShow(type="checkbox",name="module[isShow]",value="1",checked)
+                                        .form-group.col-sm-12
+                                            label.col-sm-2.control-label(for="parentNav") 文章类别
+                                            .col-sm-3
+                                                select#parentNav.form-control(name="module[parent]")
+                                                    option(value='0') 企业资讯
+                                        .form-group.col-sm-12
+                                            label.col-sm-2.control-label(for="title") 来源
+                                            .col-sm-6.col-md-3
+                                                input#title.form-control(type="text",name="module[title]",placeholder="请输入新闻来源,默认为企业名称",value="")
+                                        .form-group.col-sm-12
+                                            label.col-sm-2.control-label(for="cover") 封面图
+                                            .col-sm-6.col-md-3
+                                                input#cover.form-control(type="file",name="image",multiple="multiple",value="123")
+                                            .col-sm-3
+                                                a.form-control-static.dis_ib(href="javascript:;",data-toggle="collapse" data-target="#collapseExample") 已有上传图片, 查看缩略图
+                                        #collapseExample.form-group.col-sm-12.collapse
+                                            label.col-sm-2.control-label(for="cover") 缩略图
+                                            .col-sm-6.col-md-3
+                                                .form-control.h_a
+                                                    img(src="/images/manageNav/three.png")
+                                            .col-sm-2
+                                                a.form-control-static.dis_ib(href="javascript:;") 删除
+
+                            .row
+                                button.btn.btn-primary#submitBtn(type="button") 提交
+
+
+block script
+    script.
+        require(['jquery','module/markdown-editor'], function (abc,Editor) {
+            var editor = new Editor();
+            editor.render();
+
+            $('#submitBtn').on('click',function(){
+                $('#describeForm').submit();
+            });
+        });

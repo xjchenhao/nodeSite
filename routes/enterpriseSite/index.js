@@ -1,3 +1,7 @@
+var errorCatch = require('../../models/errorCatch');
+
+var manageModule = require('../../models/module');
+
 module.exports = function (app) {
     app.route('/enterpriseSite')
         .get(function (req, res) {
@@ -64,4 +68,21 @@ module.exports = function (app) {
         res.set('Content-Type', 'image/png');
         res.redirect('/images/enterpriseSite' + req.url);
     });
+
+    app.route('/admin/enterpriseSite/news')
+        .get(function (req, res) {
+            res.render('admin/enterpriseSite/newsList', {
+                title: '新闻管理',
+                catalogue: manageModule.catalogue,
+                breadcrumb: manageModule.getBreadcrumb(req)
+            });
+        });
+    app.route('/admin/enterpriseSite/news/add')
+        .get(function (req, res) {
+            res.render('admin/enterpriseSite/newsAdd', {
+                title: '添加',
+                catalogue: manageModule.catalogue,
+                breadcrumb: manageModule.getBreadcrumb(req)
+            });
+        });
 };
