@@ -1,5 +1,10 @@
 var errorCatch = require('../../models/errorCatch');
 
+var enterpriseNews = require('../../models/enterpriseNews');
+
+// enterpriseNews
+
+
 var manageModule = require('../../models/module');
 
 module.exports = function (app) {
