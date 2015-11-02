@@ -1,6 +1,6 @@
 var errorCatch = require('../../models/errorCatch');
 
-var enterpriseNews = require('../../models/enterpriseNews');
+var enterpriseNews = require('../../models/enterprise/news');
 
 // enterpriseNews
 
@@ -89,5 +89,8 @@ module.exports = function (app) {
                 catalogue: manageModule.catalogue,
                 breadcrumb: manageModule.getBreadcrumb(req)
             });
-        });
+        })
+        .post(function (req, res) {
+
+        })
 };
