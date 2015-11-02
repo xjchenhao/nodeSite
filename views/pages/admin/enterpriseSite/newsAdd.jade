@@ -1,9 +1,17 @@
 extends ../../../layout/admin
 block style
-    link(href="/libs/editor/paper.css",rel="stylesheet")
-    link(href="/libs/editor/editor.css",rel="stylesheet")
-    link(href="/libs/editor/vendor/icomoon/style.css",rel="stylesheet")
     style.
+        .simditor-title {
+            font: 18px "Helvetica Neue", "Xin Gothic", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+            background: transparent;
+            padding: 4px;
+            width: 100%;
+            border: none;
+            outline: none;
+            opacity: 0.6;
+            margin-bottom: 10px;
+        }
+
         .form-horizontal .form-group {
             margin-right: 0;
             margin-left: 0;
@@ -20,32 +28,29 @@ block content
                                 .panel.panel-default
                                     .panel-heading 编辑文章
                                     .panel-body
-                                        //input(type="hidden",name="id",value="123")
-                                        //.editor-wrapper
-                                        //    input.title(type="text",placeholder="请输入新闻标题 ...")
-                                        //    textarea#editor(name="editor",placeholder='Content here ....') #{doc}
+                                        input.simditor-title(type="text",placeholder="请输入新闻标题 ...")
                                         textarea#editor(placeholder="Balabala")
                             .row.m_t_20
                                 .panel.panel-default
                                     .panel-heading 其它设置
                                     .panel-body
                                         .form-group.col-sm-12
-                                            label.col-sm-2.control-label(for="title") 显示
+                                            label.col-sm-2.control-label(for="isShow") 显示
                                             .col-sm-6.col-md-3
-                                                input#isShow(type="checkbox",name="module[isShow]",value="1",checked)
+                                                input#isShow(type="checkbox",name="isShow",value="1",checked)
                                         .form-group.col-sm-12
-                                            label.col-sm-2.control-label(for="parentNav") 文章类别
+                                            label.col-sm-2.control-label(for="classify") 文章类别
                                             .col-sm-3
-                                                select#parentNav.form-control(name="module[parent]")
+                                                select#classify.form-control(name="classify")
                                                     option(value='0') 企业资讯
                                         .form-group.col-sm-12
-                                            label.col-sm-2.control-label(for="title") 来源
+                                            label.col-sm-2.control-label(for="source") 来源
                                             .col-sm-6.col-md-3
-                                                input#title.form-control(type="text",name="module[title]",placeholder="请输入新闻来源,默认为企业名称",value="")
+                                                input#source.form-control(type="text",name="source",placeholder="请输入新闻来源,默认为企业名称",value="")
                                         .form-group.col-sm-12
                                             label.col-sm-2.control-label(for="cover") 封面图
                                             .col-sm-6.col-md-3
-                                                input#cover.form-control(type="file",name="image",multiple="multiple",value="123")
+                                                input#cover.form-control(type="file",name="cover",multiple="multiple",value="123")
                                             .col-sm-3
                                                 a.form-control-static.dis_ib(href="javascript:;",data-toggle="collapse" data-target="#collapseExample") 已有上传图片, 查看缩略图
                                         #collapseExample.form-group.col-sm-12.collapse
