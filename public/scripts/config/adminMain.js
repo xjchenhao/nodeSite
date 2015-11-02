@@ -4,13 +4,15 @@ requirejs.config({
         module: 'module',
         page: 'page/admin',
         libs: '../libs',
-        jquery: '../libs/jquery/dist/jquery.min',
-        marked: '../libs/marked/lib/marked'
+        jquery: '../libs/jquery/dist/jquery',
+        marked: '../libs/marked/lib/marked',
+        simditor:'../libs/simditor/lib/simditor'
     },
     shim: {
         'libs/bootstrap/dist/js/bootstrap.min': ['jquery'],
         'libs/metisMenu/dist/metisMenu.min': ['jquery'],
-        'module/markdown-editor': ['marked', 'libs/editor/vendor/codemirror', 'libs/editor/src/intro']
+        'module/markdown-editor': ['marked', 'libs/editor/vendor/codemirror', 'libs/editor/src/intro'],
+        'simditor':['jquery','libs/simple-module/lib/module','libs/simple-hotkeys/lib/hotkeys','libs/simple-uploader/lib/uploader']
     },
     map: {
         '*': {

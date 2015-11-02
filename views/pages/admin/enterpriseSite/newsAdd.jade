@@ -20,10 +20,11 @@ block content
                                 .panel.panel-default
                                     .panel-heading 编辑文章
                                     .panel-body
-                                        input(type="hidden",name="id",value="123")
-                                        .editor-wrapper
-                                            input.title(type="text",placeholder="请输入新闻标题 ...")
-                                            textarea#editor(name="editor",placeholder='Content here ....') #{doc}
+                                        //input(type="hidden",name="id",value="123")
+                                        //.editor-wrapper
+                                        //    input.title(type="text",placeholder="请输入新闻标题 ...")
+                                        //    textarea#editor(name="editor",placeholder='Content here ....') #{doc}
+                                        textarea#editor(placeholder="Balabala")
                             .row.m_t_20
                                 .panel.panel-default
                                     .panel-heading 其它设置
@@ -61,11 +62,4 @@ block content
 
 block script
     script.
-        require(['jquery','module/markdown-editor'], function (abc,Editor) {
-            var editor = new Editor();
-            editor.render();
-
-            $('#submitBtn').on('click',function(){
-                $('#describeForm').submit();
-            });
-        });
+        require(['page/enterpriseSite/newsAdd']);
