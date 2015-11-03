@@ -1,11 +1,9 @@
-var errorCatch = require('../../models/errorCatch');
+var errorCatch = require('../../models/errorCatch');//错误捕捉
 
-var enterpriseNews = require('../../models/enterprise/news');
+var newsModule = require('../../models/enterprise/news'); //新闻发布系统模块
+var manageModule = require('../../models/module');  //后台模块管理,用来做侧栏的导航
 
-// enterpriseNews
-
-
-var manageModule = require('../../models/module');
+var _ = require('underscore');
 
 module.exports = function (app) {
     app.route('/enterpriseSite')
@@ -76,10 +74,24 @@ module.exports = function (app) {
 
     app.route('/admin/enterpriseSite/news')
         .get(function (req, res) {
+            var queryClassify = req.query.classify;  // 获得url上query的classify参数
+
+            var filtrateNews = null;
+
+            for (var i = 0, l = newsModule.data.list; i < l; i++) {
+                if (newsModule.data['list'][i].name == queryClassify) {
+                    filtrateNews.push(newsModule.data['list'][i]);
+                }
+            }
+
             res.render('admin/enterpriseSite/newsList', {
                 title: '新闻管理',
                 catalogue: manageModule.catalogue,
-                breadcrumb: manageModule.getBreadcrumb(req)
+                breadcrumb: manageModule.getBreadcrumb(req),
+                classify: newsModule.data.classify,
+                classifyId:queryClassify,
+                classifyParent: 0,
+                news: queryClassify ? filtrateNews : newsModule.data.list
             });
         });
     app.route('/admin/enterpriseSite/news/add')
@@ -87,10 +99,49 @@ module.exports = function (app) {
             res.render('admin/enterpriseSite/newsAdd', {
                 title: '添加',
                 catalogue: manageModule.catalogue,
-                breadcrumb: manageModule.getBreadcrumb(req)
+                breadcrumb: manageModule.getBreadcrumb(req),
+                classify: newsModule.data.classify,
+                classifyParent: 0,
+                news: newsModule.data.list
             });
-        })
+        });
+    app.route('/admin/enterpriseSite/news/classifyName')
         .post(function (req, res) {
+            var id = req.body.classify._id;
+            var bodyClassify = req.body.classify;
+            var _newsModule;
+            if (id !== 'undefined') {
+                newsModule.classify.findById(id, function (err, module) {
+                    if (err) {
+                        errorCatch(req, res, err);
+                        return false;
+                    }
 
+                    _newsModule = _.extend(module, bodyClassify);
+                    _newsModule.save(function (err, docs) {
+                        if (err) {
+                            console.log(err);
+                        }
+
+                        newsModule.getClassify();
+                        res.redirect('/admin/system/module');
+                    });
+                });
+            } else {
+                _newsModule = new newsModule.classify({
+                    name: bodyClassify.name,            // 名称
+                    parent: bodyClassify.parent         // 父级板块的id,有几个默认值 0:新闻系统
+                });
+
+                _newsModule.save(function (err, docs) {
+                    if (err) {
+                        errorCatch(req, res, err);
+                        return false;
+                    }
+
+                    newsModule.getClassify();
+                    res.redirect('/admin/enterpriseSite/news');
+                });
+            }
         })
 };

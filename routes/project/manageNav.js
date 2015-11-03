@@ -187,7 +187,7 @@ function entryRecord(req, res) {
                 });
 
                 //数据存储后执行
-                _manage.save(function (err, manage) {
+                _manage.save(function (err) {
                     if (err) {
                         console.log(err);
                     }
