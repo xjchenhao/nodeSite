@@ -89,8 +89,85 @@ module.exports = function (app) {
                 catalogue: manageModule.catalogue,
                 breadcrumb: manageModule.getBreadcrumb(req)
             });
+<<<<<<< Updated upstream
         })
         .post(function (req, res) {
 
+=======
+        });
+    app.route('/admin/enterpriseSite/newsClassify')
+        .delete(function(req, res){
+            var queryClassify = req.query.classify;  // 获得url上query的classify参数
+
+            var filtrateNews = null;    // 获取该分类下的新闻列表
+
+            for (var i = 0, l = newsModule.data.list; i < l; i++) {
+                if (newsModule.data['list'][i].name == queryClassify) {
+                    filtrateNews.push(newsModule.data['list'][i]);
+                }
+            }
+
+            newsModule.classify.remove({_id: queryClassify}, function (err) {
+
+                if (err) {
+                    errorCatch(req, res, err);
+                    return false;
+                }
+
+                if(!filtrateNews){
+                    res.send({
+                        resultCode: 0,
+                        resultMsg: '该分类下存在内容,无法删除!'
+                    });
+                    return false;
+                }
+
+                newsModule.getClassify('',function(){
+                    res.send({
+                        resultCode: 1,
+                        resultMsg: '删除成功'
+                    });
+                });
+            });
+        })
+
+        .post(function (req, res) {
+            var id = req.body.classify._id;
+            var bodyClassify = req.body.classify;
+            var _newsModule;
+            if (id !== 'undefined') {
+                newsModule.classify.findById(id, function (err, module) {
+                    if (err) {
+                        errorCatch(req, res, err);
+                        return false;
+                    }
+
+                    _newsModule = _.extend(module, bodyClassify);
+                    _newsModule.save(function (err, docs) {
+                        if (err) {
+                            console.log(err);
+                        }
+
+                        newsModule.getClassify();
+                        res.redirect('/admin/enterpriseSite/news');
+                    });
+                });
+            } else {
+                _newsModule = new newsModule.classify({
+                    name: bodyClassify.name,            // 名称
+                    parent: bodyClassify.parent         // 父级板块的id,有几个默认值 0:新闻系统
+                });
+
+                _newsModule.save(function (err, docs) {
+                    if (err) {
+                        errorCatch(req, res, err);
+                        return false;
+                    }
+
+                    newsModule.getClassify();
+                    res.redirect('/admin/enterpriseSite/news');
+                });
+            }
+>>>>>>> Stashed changes
         })
 };

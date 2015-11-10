@@ -24,7 +24,7 @@ block content
                                     span.panel-title 全部&nbsp;&nbsp;
                                     a(href='###',data-toggle="modal",data-target="#modifyModal",data-title="重命名分类",data-body="userGroupRename") 重命名
                                     | &nbsp;&nbsp;
-                                    a(href='javascript:;') 删除
+                                    a#deleteClassifyBtn(href='/admin/enterpriseSite/newsClassify?classify=#{classifyId}') 删除
                                 .panel-body
                                     .table-responsive
                                         table.table.table-hover.table-striped
@@ -82,6 +82,7 @@ block content
 
     #modifyModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modifyModalLabel')
         .modal-dialog(role='document')
+<<<<<<< Updated upstream
             .modal-content
                 .modal-header
                     button.close(type='button', data-dismiss='modal', aria-label='Close')
@@ -113,6 +114,17 @@ block content
                             textarea#message-text.form-control(rows="3")
                 #userGroupRename.modal-body.hidden
                     form
+=======
+            form(method="POST",action="/admin/enterpriseSite/newsClassify")
+                .modal-content
+                    .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                            span(aria-hidden='true') ×
+                        h4#modifyModalLabel.modal-title
+                    #addClassify.modal-body.hidden
+                        input(type="hidden",name="classify[_id]",value="#{classifyId}")
+                        input(type="hidden",name="classify[parent]",value="#{classifyParent}")
+>>>>>>> Stashed changes
                         .form-group
                             label.control-label(for='recipient-name') 分类名:
                             input#recipient-name.form-control(type='text')
