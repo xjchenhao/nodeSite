@@ -10,28 +10,5 @@ define(function (require, exports, module) {
         $('#' + button.data('body')).removeClass('hidden').find('input:eq(0)')[0].focus();
     });
 
-    // 删除分类
-    $('#deleteClassifyBtn').on('click',function(event){
-        event.stopPropagation();
-        event.preventDefault();
-
-        var $this = $(this);
-        if (confirm('确认删除？')) {
-            $.ajax({
-                type: "DELETE",
-                url: $this.attr('href'),
-                async: true,
-                dataType: "json",
-                data: '',
-                success: function (data) {
-                    if (!data.resultCode) {
-                        alert(data.resultMsg);
-                        return false;
-                    }
-
-                    location.href='/admin/enterpriseSite/news';
-                }
-            });
-        }
-    });
+    //
 });

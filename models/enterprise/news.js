@@ -1,10 +1,7 @@
 var mongoose = require('mongoose');
-var enterpriseNewsSchema = require('../../schemas/enterprise/news');
-var enterpriseNews = mongoose.model('enterprise-news', enterpriseNewsSchema);
+var newsSchema = require('../../schemas/enterprise/news');
+var news = mongoose.model('enterprise-news', newsSchema);
 
-<<<<<<< Updated upstream
-module.exports = enterpriseNews;
-=======
 var newsClassifySchema = require('../../schemas/enterprise/newsClassify');
 var newsClassify = mongoose.model('enterprise-news-classify', newsClassifySchema);
 
@@ -17,7 +14,7 @@ var obj = {
     }
 };
 
-obj.getClassify = function (classify, func) {
+obj.getClassify = function (classify) {
     return new Promise(function (resolve, reject) {
         var conditionObj = classify || {};
 
@@ -27,7 +24,6 @@ obj.getClassify = function (classify, func) {
             }
 
             obj.data.classify = docs;
-            func && func();
             resolve();
         });
     });
@@ -36,4 +32,3 @@ obj.getClassify = function (classify, func) {
 obj.getClassify();
 
 module.exports = obj;
->>>>>>> Stashed changes

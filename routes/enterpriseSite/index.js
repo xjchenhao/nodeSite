@@ -1,11 +1,9 @@
-var errorCatch = require('../../models/errorCatch');
+var errorCatch = require('../../models/errorCatch');//错误捕捉
 
-var enterpriseNews = require('../../models/enterprise/news');
+var newsModule = require('../../models/enterprise/news'); //新闻发布系统模块
+var manageModule = require('../../models/module');  //后台模块管理,用来做侧栏的导航
 
-// enterpriseNews
-
-
-var manageModule = require('../../models/module');
+var _ = require('underscore');
 
 module.exports = function (app) {
     app.route('/enterpriseSite')
@@ -76,30 +74,9 @@ module.exports = function (app) {
 
     app.route('/admin/enterpriseSite/news')
         .get(function (req, res) {
-            res.render('admin/enterpriseSite/newsList', {
-                title: '新闻管理',
-                catalogue: manageModule.catalogue,
-                breadcrumb: manageModule.getBreadcrumb(req)
-            });
-        });
-    app.route('/admin/enterpriseSite/news/add')
-        .get(function (req, res) {
-            res.render('admin/enterpriseSite/newsAdd', {
-                title: '添加',
-                catalogue: manageModule.catalogue,
-                breadcrumb: manageModule.getBreadcrumb(req)
-            });
-<<<<<<< Updated upstream
-        })
-        .post(function (req, res) {
-
-=======
-        });
-    app.route('/admin/enterpriseSite/newsClassify')
-        .delete(function(req, res){
             var queryClassify = req.query.classify;  // 获得url上query的classify参数
 
-            var filtrateNews = null;    // 获取该分类下的新闻列表
+            var filtrateNews = null;
 
             for (var i = 0, l = newsModule.data.list; i < l; i++) {
                 if (newsModule.data['list'][i].name == queryClassify) {
@@ -107,30 +84,28 @@ module.exports = function (app) {
                 }
             }
 
-            newsModule.classify.remove({_id: queryClassify}, function (err) {
-
-                if (err) {
-                    errorCatch(req, res, err);
-                    return false;
-                }
-
-                if(!filtrateNews){
-                    res.send({
-                        resultCode: 0,
-                        resultMsg: '该分类下存在内容,无法删除!'
-                    });
-                    return false;
-                }
-
-                newsModule.getClassify('',function(){
-                    res.send({
-                        resultCode: 1,
-                        resultMsg: '删除成功'
-                    });
-                });
+            res.render('admin/enterpriseSite/newsList', {
+                title: '新闻管理',
+                catalogue: manageModule.catalogue,
+                breadcrumb: manageModule.getBreadcrumb(req),
+                classify: newsModule.data.classify,
+                classifyId:queryClassify,
+                classifyParent: 0,
+                news: queryClassify ? filtrateNews : newsModule.data.list
             });
-        })
-
+        });
+    app.route('/admin/enterpriseSite/news/add')
+        .get(function (req, res) {
+            res.render('admin/enterpriseSite/newsAdd', {
+                title: '添加',
+                catalogue: manageModule.catalogue,
+                breadcrumb: manageModule.getBreadcrumb(req),
+                classify: newsModule.data.classify,
+                classifyParent: 0,
+                news: newsModule.data.list
+            });
+        });
+    app.route('/admin/enterpriseSite/news/classifyName')
         .post(function (req, res) {
             var id = req.body.classify._id;
             var bodyClassify = req.body.classify;
@@ -149,7 +124,7 @@ module.exports = function (app) {
                         }
 
                         newsModule.getClassify();
-                        res.redirect('/admin/enterpriseSite/news');
+                        res.redirect('/admin/system/module');
                     });
                 });
             } else {
@@ -168,6 +143,5 @@ module.exports = function (app) {
                     res.redirect('/admin/enterpriseSite/news');
                 });
             }
->>>>>>> Stashed changes
         })
 };
