@@ -2,10 +2,10 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var exphbs  = require('express-handlebars');
 var mongoose = require('mongoose');
 var fs = require('fs');
-var morgan = require('morgan'); // 记录日志的模块
+var engines = require('consolidate');       // 解析模板引擎支持express
+var morgan = require('morgan');             // 记录日志的模块
 
 var port = process.env.PORT || 3000;
 var app = express();
@@ -32,9 +32,11 @@ mongoose.connection.on("open", function () {
 app.set('views', './views/pages');
 
 //使用的模板引擎
-app.engine('.tpl', exphbs({}));
+app.engine('jade', engines.jade);
+app.engine('tpl', engines.handlebars);
+
 app.set('view engine', 'jade');
-app.set('view engine', '.tpl');
+//app.set('view engine', 'tpl');
 
 //设置jade不换行
 app.locals.pretty = true;

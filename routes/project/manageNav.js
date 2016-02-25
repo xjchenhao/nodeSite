@@ -20,7 +20,7 @@ module.exports = function (app) {
                     return new handlebars.SafeString('<p>hello world</p>');
                 });
 
-                res.render('project/manageNav', {
+                res.render('project/manageNav.tpl', {
                     title: '管理平台首页',
                     manage: manage
                 });
