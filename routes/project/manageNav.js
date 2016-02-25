@@ -1,4 +1,5 @@
 var errorCatch = require('../../models/errorCatch');
+var handlebars=require('handlebars');
 
 var multiparty = require('multiparty');
 var fs = require('fs');
@@ -14,6 +15,10 @@ module.exports = function (app) {
                 if (err) {
                     console.log(err);
                 }
+
+                handlebars.registerHelper("helper-footer", function () {
+                    return new handlebars.SafeString('<p>hello world</p>');
+                });
 
                 res.render('project/manageNav', {
                     title: '管理平台首页',
