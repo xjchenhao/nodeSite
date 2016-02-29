@@ -1,5 +1,5 @@
 # nodeSite
-基于node的站点建设
+基于express的node的站点建设
 
 ## 运行方式
 
@@ -14,9 +14,10 @@
 
 ### 服务端
 1. Express
-2. mongod
+2. mongodb
 3. mongoose
 4. jade
+5. handlebars
 
 ...
 
