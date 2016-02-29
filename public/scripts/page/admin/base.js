@@ -1,17 +1,14 @@
 define(function (require, exports, module) {
-    require('libs/bootstrap/dist/js/bootstrap.min');
-    //--------------------------------------------------【第三方iconFont】
-    require('css!libs/font-awesome/css/font-awesome.min.css');
+    require('bootstrap');
 
     //--------------------------------------------------【页面加载状态】
-    require('css!libs/pace/themes/blue/pace-theme-minimal.css');
-    var pace = require('libs/pace/pace.min');
+    var pace = require('pace');
     pace.start({
         document: false
     });
 
     //--------------------------------------------------【侧栏导航管理】
-    require('libs/metisMenu/dist/metisMenu.min');
+    require('metisMenu');
 
     //侧栏收缩
     $('#side-menu').metisMenu();
