@@ -1,6 +1,6 @@
 mixin catalogueNode(catalogue,index,parentId)
     for item,i in catalogue
-        if item.level == index && item.parent == parentId
+        if item.level == index && item.parent == parentId && catalogue[i].isShow
             li
                 a(href="#{item.link}")
                     i(class=item.icon)

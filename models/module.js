@@ -5,11 +5,10 @@ var manageModule = mongoose.model('module', manageModuleSchema);
 //--------------------------------------------------【排序后的目录json数据缓存】
 
 manageModule.catalogue = [];    // 缓存排除隐藏的模块json
-manageModule.catalogueAll = []; // 缓存包含隐藏的模块json
 
 //--------------------------------------------------【判断是否存在子集】
 manageModule.isSubset = function (id) {
-    var catalogue = manageModule.catalogueAll;
+    var catalogue = manageModule.catalogue;
     var isExist = false;
     catalogue.forEach(function (obj) {
         if (obj.parent == id) {
@@ -36,7 +35,7 @@ var specialUrlMap = {
 
 // 生成面包屑的数组的方法
 manageModule.getBreadcrumb = function (req) {
-    var catalogue = manageModule.catalogueAll,
+    var catalogue = manageModule.catalogue,
         url = req.url.split('?')[0],
         arr = [],
 
@@ -148,8 +147,7 @@ manageModule.getCatalogue = function () {
 
             // 子集进行递归继续查询
             arr.forEach(function (obj) {
-                obj.isShow && manageModule.catalogue.push(findOne(obj.id));
-                manageModule.catalogueAll.push(findOne(obj.id));
+                manageModule.catalogue.push(findOne(obj.id));
                 level++;
                 subset(obj.id);
                 level--;
@@ -157,7 +155,6 @@ manageModule.getCatalogue = function () {
         };
 
     manageModule.catalogue.length = 0;
-    manageModule.catalogueAll.length = 0;
 
     return new Promise(function (resolve, reject) {
         manageModule.find({}, function (err, docs) {

@@ -16,7 +16,7 @@ module.exports = function (app) {
                 res.render('admin/moduleList', {
                     title: '更新模块',
                     catalogue: manageModule.catalogue,
-                    catalogueAll: manageModule.catalogueAll,
+                    catalogueAll: manageModule.catalogue,
                     breadcrumb: manageModule.getBreadcrumb(req)
                 });
             });
