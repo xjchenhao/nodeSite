@@ -6,8 +6,8 @@
 1. [安装node环境](https://nodejs.org/en/)
 2. 在项目根目录下运行`npm install`安装项目的依赖模块
 3. 在项目根目录下运行`bower install`安装页面所依赖的插件
-4. 在项目根目录下运行`mongod --dbpath=./db --port 27017`启动mangoDB(把数据库存放在了项目的根目录`bd`文件夹下,如果没有请手动创建个空文件夹`mkdir db`)
-5. 另启一个控制台,运行`nodemon app.js`或者`node app.js`(前者可以检测文件更改自动重启服务器)
+4. 查看项目根目录是否存在`bd`文件夹, 如果没有请手动创建个空文件夹`mkdir db`
+5. `npm run server`运行项目
 6. 访问网址: [http://127.0.0.1:3000/](http://127.0.0.1:3000/)
 
 ## 框架&工具

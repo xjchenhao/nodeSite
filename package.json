@@ -7,8 +7,9 @@
     "body-parser": "^1.13.3",
     "consolidate": "^0.14.0",
     "express": "^4.13.3",
+    "express-handlebars": "^3.0.0",
     "express-session": "^1.11.3",
-    "gulp-nodemon": "^2.0.4",
+    "forever": "^0.15.1",
     "handlebars": "^4.0.5",
     "jade": "^1.11.0",
     "markdown": "^0.5.0",
@@ -21,14 +22,15 @@
   },
   "devDependencies": {
     "color": "^0.10.1",
-    "express-handlebars": "^3.0.0",
+    "gulp-nodemon": "^2.0.4",
     "gulp": "^3.9.0"
   },
   "scripts": {
     "db-stop": "mongo admin --eval \"db.shutdownServer()\"",
     "db-start": "mongod --dbpath=./db --port 27017 --fork --logpath=./log/mongodb.log",
     "db": "npm run db-stop;npm run db-start",
-    "server": "npm run db && forever start app.js"
+    "server": "npm run db && forever start app.js",
+    "forever-stopall":"forever stopall"
   },
   "repository": {
     "type": "git",
