@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var handlebars = require('express-handlebars');
 var mongoose = require('mongoose');
 var fs = require('fs');
 var engines = require('consolidate');       // 解析模板引擎支持express
@@ -29,14 +30,21 @@ mongoose.connection.on("open", function () {
 });
 
 //视图文件的路径
-app.set('views', './views/pages');
+app.set('views', path.join(__dirname, 'views/pages'));
 
 //使用的模板引擎
 app.engine('jade', engines.jade);
 app.engine('tpl', engines.handlebars);
 
+
+app.engine('tpl', handlebars.create({
+    layoutsDir: './views/layout',
+    partialsDir: './views/includes',
+    defaultLayout: 'manage',
+    extname: '.tpl'
+}).engine);
+
 app.set('view engine', 'jade');
-//app.set('view engine', 'tpl');
 
 //设置jade不换行
 app.locals.pretty = true;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>项目导航</title>
     <link href="/libs/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <style>
         body{ background: #f0f4fd; width: 100%; height: 100%; margin:0;padding: 0}
@@ -12,6 +12,7 @@
         .nav-list .thumbnail{padding:15px 25px;border-radius: 0;background: #fff no-repeat 90% bottom;}
         .nav-list a .tit{font-size: 30px}
         .nav-list a span{ display: block;}
+        .footer{text-align: center;}
     </style>
 </head>
 <body>
@@ -34,10 +35,10 @@
             {{/each}}
         </ul>
     </div>
+    <footer class="footer">
+        <!--{{helper-footer}}-->
+    </footer>
 </div>
-<footer class="footer">
-    {{helper-footer}}
-</footer>
 <script src="/libs/jquery/dist/jquery.min.js"></script>
 <script src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/libs/requirejs/require.js"></script>

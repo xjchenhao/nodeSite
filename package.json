@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "color": "^0.10.1",
+    "express-handlebars": "^3.0.0",
     "gulp": "^3.9.0"
   },
   "scripts": {

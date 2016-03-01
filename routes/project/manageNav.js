@@ -22,7 +22,8 @@ module.exports = function (app) {
 
                 res.render('project/manageNav.tpl', {
                     title: '管理平台首页',
-                    manage: manage
+                    manage: manage,
+                    layout: false
                 });
             });
         });
