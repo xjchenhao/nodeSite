@@ -1,7 +1,7 @@
 var errorCatch = require('../../models/errorCatch');
 
 var adminUser = require('../../models/adminUser');
-var moment = require('../../public/libs/moment/moment');
+var moment = require('moment');
 
 var manageModule = require('../../models/module');
 var siteInfo = require('../../models/siteInfo');

@@ -41,7 +41,5 @@
 </div>
 <script src="/libs/jquery/dist/jquery.min.js"></script>
 <script src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/libs/requirejs/require.js"></script>
-<script src="/scripts/module/require-config.js"></script>
 </body>
 </html>

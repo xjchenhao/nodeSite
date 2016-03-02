@@ -61,12 +61,12 @@ app.use(session({
 
 // stylus编译
 app.use(require("stylus").middleware({
-    src: './public/style',
+    src: './public',
     compress: true
 }));
 
 //静态资源的路径
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'static')));
 app.use(express.static(path.join(__dirname, 'upload')));
 
 //日志:访问记录
