@@ -40,8 +40,8 @@ app.engine('tpl', engines.handlebars);
 app.engine('tpl', handlebars.create({
     layoutsDir: './views/layout',
     partialsDir: './views/includes',
-    defaultLayout: 'manage',
-    extname: '.tpl'
+    extname: '.tpl',
+    helpers:require('./public/scripts/module/qian360H5/handlebars-helper.js')
 }).engine);
 
 app.set('view engine', 'jade');

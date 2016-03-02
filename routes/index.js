@@ -21,6 +21,9 @@ module.exports = function (app) {
     //后台登录
     require('../routes/admin/login')(app);
 
+    //qian360H5
+    require('../routes/qian360H5/home')(app);
+
     //后台首页
     require('../routes/admin/home')(app);
 
