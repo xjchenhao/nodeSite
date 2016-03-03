@@ -12,7 +12,7 @@
     "forever": "^0.15.1",
     "handlebars": "^4.0.5",
     "jade": "^1.11.0",
-    "less": "^2.6.0",
+    "less-middleware": "^2.1.0",
     "markdown": "^0.5.0",
     "moment": "^2.11.2",
     "mongodb": "^2.1.7",

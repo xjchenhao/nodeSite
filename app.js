@@ -61,9 +61,12 @@ app.use(session({
 
 // stylus编译
 app.use(require("stylus").middleware({
-    src: './public',
+    src: './static',
     compress: true
 }));
+
+//less编译
+app.use(require('less-middleware')(path.join(__dirname, 'static')));
 
 //静态资源的路径
 app.use(express.static(path.join(__dirname, 'static')));
