@@ -6,7 +6,7 @@ mixin catalogueNode(catalogue,index,parentId)
                     i(class=item.icon)
                     | &nbsp;&nbsp;#{item.title}
                     if catalogue[i + 1] && catalogue[i + 1].level > item.level
-                        i.fa.fa-angle-right
+                        i.fa.arrow
                 if catalogue[i + 1] && catalogue[i + 1].level > item.level
                     ul.nav.nav-second-level.collapse
                         +catalogueNode(catalogue,index + 1,item.id)
@@ -15,8 +15,7 @@ header.header.navbar.navbar-default.navbar-static-top
 
     .navbar-header
         //-logo
-        .navbar-brand
-            a(href="/admin") 管理系统
+        a.navbar-brand(href="/admin",title="管理系统") 管理系统
 
         //-移动端的侧栏展开键
         button.navbar-toggle(type="button",data-toggle="collapse",data-target=".navbar-collapse")
@@ -25,28 +24,28 @@ header.header.navbar.navbar-default.navbar-static-top
             span.icon-bar
             span.icon-bar
 
-    //-顶部快捷入口
-    nav.nav.navbar-top-links.navbar-right
-        li.dropdown
-            a(href="javascript:;",data-toggle="dropdown")
-                i.fa.fa-user
-                | &nbsp;
-                i.fa.fa-caret-down
+        //-顶部快捷入口
+        nav.nav.navbar-top-links.navbar-right
+            li.dropdown
+                a(href="javascript:;",data-toggle="dropdown")
+                    i.fa.fa-user
+                    | &nbsp;
+                    i.fa.fa-caret-down
 
-            ul.dropdown-menu.dropdown-user
-                li
-                    a(href="javascript:;")
-                        i.fa.fa-user
-                        | &nbsp;&nbsp;User Profile
-                li
-                    a(href="javascript:;")
-                        i.fa.fa-cog
-                        | &nbsp;&nbsp;Settings
-                li.divider
-                li
-                    a(href="/admin/logout")
-                        i.fa.fa-log-out
-                        | &nbsp;&nbsp;Logout
+                ul.dropdown-menu.dropdown-user
+                    li
+                        a(href="javascript:;")
+                            i.fa.fa-user
+                            | &nbsp;&nbsp;User Profile
+                    li
+                        a(href="javascript:;")
+                            i.fa.fa-cog
+                            | &nbsp;&nbsp;Settings
+                    li.divider
+                    li
+                        a(href="/admin/logout")
+                            i.fa.fa-log-out
+                            | &nbsp;&nbsp;Logout
 
     //-侧栏
     div.sidebar.navbar-default

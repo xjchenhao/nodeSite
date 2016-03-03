@@ -5,4 +5,7 @@ node_modules/
 log/
 
 #页面用到的工具and插件
-public/libs/
+static/libs/
+
+#数据库
+db/
