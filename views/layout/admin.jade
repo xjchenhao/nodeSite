@@ -16,8 +16,8 @@ html
                         if i == 0
                             li
                                 a(href="#{item.link}")
-                                    i.fa.fa-home.fa-lg
-                                    | &nbsp;&nbsp;#{item.title}
+                                    i.fa.fa-home.fa-lg(style="margin-right:5px")
+                                    | #{item.title}
                         else
                             if i < breadcrumb.length - 1
                                 li

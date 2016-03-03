@@ -39,12 +39,18 @@ block content
                     label.col-sm-2.control-label(for="orderBy") 排序编号
                     .col-sm-10
                         input#orderBy.form-control(type="text",name="orderBy",value="#{manage.orderBy}")
-        .row
+        .row.hidden
             .form-group.col-sm-12
                 .row
                     label.col-sm-2.control-label(for="image") 上传图片
                     .col-sm-10
                         input#image.form-control(type="file",name="image",value="#{manage.image}",multiple="multiple")
+        .row
+            .form-group.col-sm-12
+                .row
+                    label.col-sm-2.control-label(for="icon") 自定义图标
+                    .col-sm-10
+                        input#icon.form-control(type="text",name="icon",placeholder="iconfont图标样式",value="#{manage.icon || ''}")
         .row.text-right
             .col-sm-12
                 button.btn.btn-default#submitBtn(type="button") 提交

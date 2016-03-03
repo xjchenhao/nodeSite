@@ -54,6 +54,7 @@ module.exports = function (app) {
                     describeCn: '',
                     link: '',
                     orderBy: '',
+                    icon:'',
                     image: ''
                 },
                 catalogue: manageModule.catalogue,
@@ -169,6 +170,7 @@ function entryRecord(req, res) {
                         describeCn: fields.describeCn[0],
                         link: fields.link[0],
                         orderBy: fields.orderBy[0],
+                        icon:fields.icon[0],
                         image: inputFile.originalFilename ? 'images/manageNav/' + inputFile.originalFilename : manage.image
                     });
 
@@ -189,6 +191,7 @@ function entryRecord(req, res) {
                     describeCn: fields.describeCn[0],
                     link: fields.link[0],
                     orderBy: fields.orderBy[0],
+                    icon:fields.icon[0],
                     image: inputFile.originalFilename ? 'images/manageNav/' + inputFile.originalFilename : ''
                 });
 

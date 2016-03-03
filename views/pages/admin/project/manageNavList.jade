@@ -10,8 +10,9 @@ block content
                             th 项目名
                             th 中文描述
                             th 英文描述
+                            //th 图片
+                            th 图标
                             th 超链接
-                            th 图片
                             th 排序编号
                             th 查看
                             th 更新
@@ -22,8 +23,10 @@ block content
                                 td #{item.projectName}
                                 td #{item.describeCn}
                                 td #{item.describeEn}
+                                //td #{item.image}
+                                td
+                                    i(class=item.icon)
                                 td #{item.link}
-                                td #{item.image}
                                 td #{item.orderBy}
                                 td: a(target="_blank",href="#{item.link}") 查看
                                 td: a(href="../admin/manageNav/update?id=#{item._id}") 修改
