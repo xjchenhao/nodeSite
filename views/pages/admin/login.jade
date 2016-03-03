@@ -3,28 +3,26 @@ html
     head
         meta(charset="utf-8")
         meta(name="viewport",content="width=device-width, initial-scale=1")
-        title #{title}
-        link(href="/libs/bootstrap/dist/css/bootstrap.css",rel="stylesheet")
-        style.
-            .container {
-                margin-top: 30px
-            }
+        title login
+        include ../../includes/admin/head
     body
         .container
-            form(action="/admin/login",method="POST")
-                fieldset
-                    legend
-                        h2 登录
-                    div.form-group
-                        label 用户名
-                        input.form-control(name="user[name]",type="text")
-                    div.form-group
-                        label 密码
-                        input.form-control(name="user[password]",type="password")
-                    div.form-group
-                        button.btn.btn-primary(type="submit") 提交
-
-    script(src="/libs/jquery/dist/jquery.min.js")
-    script(src="/libs/bootstrap/dist/js/bootstrap.min.js")
-    script(src="/libs/requirejs/require.js")
-    script(src="/scripts/module/require-config.js")
+            .row
+                .col-md-4.col-md-offset-4
+                    .login-panel.panel.panel-default
+                        .panel-heading
+                            h3.panel-title Please Sign In
+                        .panel-body
+                            form(action="/admin/login",method="POST")
+                                fieldset
+                                    .form-group
+                                        input.form-control(placeholder='userName', name='user[name]', type='text', autofocus='')
+                                    .form-group
+                                        input.form-control(placeholder='Password', name='user[password]', type='password', value='')
+                                    //.checkbox
+                                    //    label
+                                    //        input(name='user[remember]', type='checkbox', value='Remember Me')
+                                    //        | Remember Me
+                                    // Change this to a button or input when using this as a form
+                                    button.btn.btn-lg.btn-success.btn-block(type="submit") 提交
+    include ../../includes/admin/footer
