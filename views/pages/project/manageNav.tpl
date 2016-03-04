@@ -27,7 +27,7 @@
             {{#each manage}}
                 <li class="col-sm-6 col-lg-4">
                     <div class="thumbnail"{{!-- style="{{#if image}}background-image:url({{image}}){{/if}}"--}}>
-                        <a href="{{link}}">
+                        <a href="{{link}}" target="_blank">
                             <div class="tit">{{projectName}}</div>
                             <span>{{describeCn}}</span>
                             <span>{{describeEn}}</span>
