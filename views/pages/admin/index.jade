@@ -10,15 +10,19 @@ block breadcrumb
 
 block content
     .row
-        .col-md-4 本次登录IP：#{loginInfo.currentIp}
-        .col-md-4 上次登录IP：#{loginInfo.lastIp}
-        .col-md-4 上次登录时间：#{moment(loginInfo.lastTime).format('YYYY/MM/DD HH:mm:ss')}
-    br
+        .col-md-12
+            .box
+                .box-header.with-border 登录信息
+                .box-body
+                    .row
+                        .col-md-4 本次登录IP：#{loginInfo.currentIp}
+                        .col-md-4 上次登录IP：#{loginInfo.lastIp}
+                        .col-md-4 上次登录时间：#{moment(loginInfo.lastTime).format('YYYY/MM/DD HH:mm:ss')}
     .row
         .col-md-12
-            .panel.panel-default.site-info
-                .panel-heading 站点信息
-                .panel-body
+            .box
+                .box-header.with-border 站点信息
+                .box-body
                     .row
                         .col-md-4 站点名称：#{siteInfo.siteName}
                         .col-md-4 公司名称：#{siteInfo.companyName}

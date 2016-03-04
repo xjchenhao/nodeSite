@@ -7,9 +7,11 @@ block style
 block content
     .row
         .col-sm-12
-            form#describeForm(method="POST",action="/admin/describe")
-                .editor-wrapper
-                    textarea#editor(name="editor",placeholder='Content here ....') #{doc}
+            .box
+                .box-body
+                    form#describeForm(method="POST",action="/admin/describe")
+                        .editor-wrapper
+                            textarea#editor(name="editor",placeholder='Content here ....') #{doc}
     .row.text-left
         .col-sm-12
             a.btn.btn-primary#submitBtn 提交
