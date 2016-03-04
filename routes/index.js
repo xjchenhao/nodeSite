@@ -5,10 +5,13 @@ module.exports = function (app) {
     env = env.toLowerCase();
 
     /*
-     * 后台部分
+     * 根据环境变量
+     * 判断是否需要进行登录判断
      * */
 
-    //判断登录
+    var env = process.env.NODE_ENV || 'develop';
+    env = env.toLowerCase();
+
     app.use('/admin', function (req, res, next) {
 
         if (env === 'production') {
