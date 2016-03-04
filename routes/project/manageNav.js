@@ -30,8 +30,6 @@ module.exports = function (app) {
 
     app.route(['/ui','/ui/index.html'])
         .get(function (req, res) {
-            console.log(req.url);
-
             manageNav.fetch(function (err, manage) {
                 if (err) {
                     console.log(err);
