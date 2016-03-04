@@ -28,6 +28,20 @@ module.exports = function (app) {
             });
         });
 
+    app.route(['/ui','ui/index.html'])
+        .get(function (req, res) {
+            manageNav.fetch(function (err, manage) {
+                if (err) {
+                    console.log(err);
+                }
+
+                res.render('project/index.tpl', {
+                    title: 'admin ui',
+                    layout: false
+                });
+            });
+        });
+
     app.route('/admin/manageNav')
         .get(function (req, res) {
             manageNav.fetch(function (err, manage) {
