@@ -8,50 +8,51 @@ html
         block style
 
     body.hold-transition.skin-blue.sidebar-mini
-        include ../includes/admin/header
-        main.content-wrapper#page-wrapper
-            //.content
-            //    if breadcrumb
-            //        ol.breadcrumb
-            //            for item,i in breadcrumb
-            //                if i == 0
-            //                    li
-            //                        a(href="#{item.link}")
-            //                            i.fa.fa-home.fa-lg(style="margin-right:5px")
-            //                            | #{item.title}
-            //                else
-            //                    if i < breadcrumb.length - 1
-            //                        li
-            //                            a(href="#{item.link}")
-            //                                | #{item.title}
-            //                    else
-            //                        li.active
-            //                            | #{item.title}
-            //    else
-            //        block breadcrumb
+        .wrapper
+            include ../includes/admin/header
+            main.content-wrapper#page-wrapper
+                //.content
+                //    if breadcrumb
+                //        ol.breadcrumb
+                //            for item,i in breadcrumb
+                //                if i == 0
+                //                    li
+                //                        a(href="#{item.link}")
+                //                            i.fa.fa-home.fa-lg(style="margin-right:5px")
+                //                            | #{item.title}
+                //                else
+                //                    if i < breadcrumb.length - 1
+                //                        li
+                //                            a(href="#{item.link}")
+                //                                | #{item.title}
+                //                    else
+                //                        li.active
+                //                            | #{item.title}
+                //    else
+                //        block breadcrumb
 
-            section.content-header
-                h1 #{title}
-                if breadcrumb
-                    ol.breadcrumb
-                        for item,i in breadcrumb
-                            if i == 0
-                                li
-                                    a(href="#{item.link}")
-                                        i.fa.fa-home.fa-lg(style="margin-right:5px")
-                                        | #{item.title}
-                            else
-                                if i < breadcrumb.length - 1
+                section.content-header
+                    h1 #{title}
+                    if breadcrumb
+                        ol.breadcrumb
+                            for item,i in breadcrumb
+                                if i == 0
                                     li
                                         a(href="#{item.link}")
+                                            i.fa.fa-home.fa-lg(style="margin-right:5px")
                                             | #{item.title}
                                 else
-                                    li.active
-                                        | #{item.title}
-                else
-                    block breadcrumb
-            .content
-                block content
+                                    if i < breadcrumb.length - 1
+                                        li
+                                            a(href="#{item.link}")
+                                                | #{item.title}
+                                    else
+                                        li.active
+                                            | #{item.title}
+                    else
+                        block breadcrumb
+                .content
+                    block content
         include ../includes/admin/footer
         block script
                 

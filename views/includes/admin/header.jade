@@ -7,6 +7,7 @@ mixin catalogueNode(catalogue,index,parentId)
                     span &nbsp;&nbsp;#{item.title}
                     if catalogue[i + 1] && catalogue[i + 1].level > item.level
                         i.fa.fa-angle-left.pull-right
+
                 if catalogue[i + 1] && catalogue[i + 1].level > item.level
                     ul.treeview-menu
                         +catalogueNode(catalogue,index + 1,item.id)
@@ -191,6 +192,8 @@ header.main-header
                             p
                                 | ChenHao - Web Developer
                                 small Member since Nov. 2012
+                        //// Menu Body
+                        //li.user-body
                         // Menu Footer
                         li.user-footer
                             .pull-left
@@ -219,6 +222,7 @@ aside.main-sidebar
                         i.fa.fa-search
         // /.search form
         // sidebar menu: : style can be found in sidebar.less
-        ul.sidebar-menu
+        ul.sidebar-menu#sidebar-menu
             li.header MAIN NAVIGATION
+            // 递归生成目录结构
             +catalogueNode(catalogue,1,"0")
