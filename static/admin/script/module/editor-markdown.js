@@ -1,7 +1,7 @@
 (function (root, factory) {
     if (typeof define === 'function' && (define.amd || define.cmd)) {
         define(function (require) {
-            var marked = require('marked');
+            var marked = require('marked-original');
             return factory(root, marked, {});
         });
     } else {
