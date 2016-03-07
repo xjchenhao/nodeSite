@@ -7,7 +7,9 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "AdminLTE": "admin-lte#~2.3.2",
     "bootstrap": "~3.3.5",
+    "bootstrap-treeview": "~1.2.0",
     "editor": "lepture/editor#~0.1.0",
     "est": "https://github.com/ecomfe/est.git#~2.0.4",
     "font-awesome": "~4.4.0",
@@ -17,8 +19,7 @@
     "qst": "~1.0.6",
     "require-css": "~0.1.8",
     "requirejs": "~2.1.20",
-    "simditor": "~2.3.4",
-    "AdminLTE": "admin-lte#~2.3.2"
+    "simditor": "~2.3.4"
   },
   "ignore": [
     "**/.*"

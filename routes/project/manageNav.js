@@ -35,7 +35,21 @@ module.exports = function (app) {
                     console.log(err);
                 }
 
-                res.render('project/index.tpl', {
+                res.render('ui/index.tpl', {
+                    title: 'admin ui',
+                    layout: false
+                });
+            });
+        });
+
+    app.route(['/ui/folderTree','/ui/tableTree'])
+        .get(function (req, res) {
+            manageNav.fetch(function (err, manage) {
+                if (err) {
+                    console.log(err);
+                }
+
+                res.render('ui/folderTree.tpl', {
                     title: 'admin ui',
                     layout: false
                 });
