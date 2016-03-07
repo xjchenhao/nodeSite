@@ -1,5 +1,5 @@
 var errorCatch = require('../../models/errorCatch'),
-    pageUrl = require('../../public/scripts/page/qian360H5/url-map'),
+    pageUrl = require('../../static/qian360H5/script/page/url-map'),
     request = require('request');
 
 var fs = require("fs");
@@ -56,10 +56,6 @@ module.exports = function (app) {
                 }
             });
         });
-
-    app.use('/image/common', function (req, res, next) {
-        res.redirect('/images/qian360H5/common' + req.url);
-    });
 
     app.use('/public/style', function (req, res, next) {
         res.redirect('/style' + req.url);

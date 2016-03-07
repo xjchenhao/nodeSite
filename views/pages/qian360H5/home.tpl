@@ -15,7 +15,7 @@
                 <a href="product.html?borrowId={{borrowId}}" data-ajax="false">
                     <div class="tit">{{name}}</div>
                     <div class="cont">
-                        <div class="main" style="background-image: url('/images/qian360H5/home-progressbar/{{helper-progressbar}}.png')">
+                        <div class="main" style="background-image: url('/qian360H5/image/home-progressbar/{{helper-progressbar}}.png')">
                             <div class="tits">预期年化</div>
                             <div class="conts">
                                 {{normalApr}}<small>%</small>
@@ -57,15 +57,7 @@
     </div>
 </footer>
 {{!--<section id="pageLoading"></section>--}}
-<script src="/scripts/sea.js"></script>
-<script>
-    seajs.config({
-        "paths": {
-            "page": "/scripts/page/qian360H5",
-            "module": "/scripts/module/qian360H5"
-        }
-    });
-</script>
+<script src="/qian360H5/script/sea.js"></script>
 <script>
     seajs.use('page/home');
 </script>
