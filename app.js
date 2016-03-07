@@ -8,7 +8,7 @@ var fs = require('fs');
 var engines = require('consolidate');       // 解析模板引擎支持express
 var morgan = require('morgan');             // 记录日志的模块
 
-var port = process.env.PORT || 3000;
+var port = process.env.NODE_PORT || 3000;
 var app = express();
 
 //连接本地数据库
@@ -56,17 +56,20 @@ app.use(bodyParser.json()); // 把返回值转成json格式
 //中间件:session设置
 app.use(session({
     secret: 'secret',
-    cookie: {maxAge: 1200000}  //session时长为20秒
+    cookie: {maxAge: 1200000}  //session时长为20分钟
 }));
 
 // stylus编译
 app.use(require("stylus").middleware({
-    src: './public/style',
+    src: './static',
     compress: true
 }));
 
+//less编译
+app.use(require('less-middleware')(path.join(__dirname, 'static')));
+
 //静态资源的路径
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'static')));
 app.use(express.static(path.join(__dirname, 'upload')));
 
 //日志:访问记录

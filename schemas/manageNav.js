@@ -6,6 +6,7 @@ var schema = new mongoose.Schema({
     link: String,
     image: String,
     orderBy:Number,
+    icon:String,
     meta: {
         createAt: {
             type: Date,

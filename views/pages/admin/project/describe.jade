@@ -7,15 +7,19 @@ block style
 block content
     .row
         .col-sm-12
-            form#describeForm(method="POST",action="/admin/describe")
-                .editor-wrapper
-                    textarea#editor(name="editor",placeholder='Content here ....') #{doc}
+            .box
+                .box-body
+                    form#describeForm(method="POST",action="/admin/describe")
+                        .editor-wrapper
+                            textarea#editor(name="editor",placeholder='Content here ....') #{doc}
     .row.text-left
         .col-sm-12
             a.btn.btn-primary#submitBtn 提交
 block script
+    // todo: 直接引用`marked`浏览模式会undefined, 所以暂时用`module/editor-markdown`
     script.
         require(['jquery','module/editor-markdown'], function (abc,Editor) {
+
             var editor = new Editor();
             editor.render();
 

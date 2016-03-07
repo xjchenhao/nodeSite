@@ -28,6 +28,34 @@ module.exports = function (app) {
             });
         });
 
+    app.route(['/ui','/ui/index.html'])
+        .get(function (req, res) {
+            manageNav.fetch(function (err, manage) {
+                if (err) {
+                    console.log(err);
+                }
+
+                res.render('ui/index.tpl', {
+                    title: 'admin ui',
+                    layout: false
+                });
+            });
+        });
+
+    app.route(['/ui/folderTree','/ui/tableTree'])
+        .get(function (req, res) {
+            manageNav.fetch(function (err, manage) {
+                if (err) {
+                    console.log(err);
+                }
+
+                res.render('ui/folderTree.tpl', {
+                    title: 'admin ui',
+                    layout: false
+                });
+            });
+        });
+
     app.route('/admin/manageNav')
         .get(function (req, res) {
             manageNav.fetch(function (err, manage) {
@@ -54,6 +82,7 @@ module.exports = function (app) {
                     describeCn: '',
                     link: '',
                     orderBy: '',
+                    icon:'',
                     image: ''
                 },
                 catalogue: manageModule.catalogue,
@@ -169,6 +198,7 @@ function entryRecord(req, res) {
                         describeCn: fields.describeCn[0],
                         link: fields.link[0],
                         orderBy: fields.orderBy[0],
+                        icon:fields.icon[0],
                         image: inputFile.originalFilename ? 'images/manageNav/' + inputFile.originalFilename : manage.image
                     });
 
@@ -189,6 +219,7 @@ function entryRecord(req, res) {
                     describeCn: fields.describeCn[0],
                     link: fields.link[0],
                     orderBy: fields.orderBy[0],
+                    icon:fields.icon[0],
                     image: inputFile.originalFilename ? 'images/manageNav/' + inputFile.originalFilename : ''
                 });
 

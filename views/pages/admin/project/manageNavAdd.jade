@@ -7,47 +7,55 @@ block style
         }
 
 block content
-    form.form-horizontal#manageNavForm(method="POST",action="/admin/manageNav/add",enctype="multipart/form-data")
-        input(type="hidden",name="_id",value="#{manage._id}")
-        .row
-            .form-group.col-sm-12
+    .box
+        .box-body
+            form.form-horizontal#manageNavForm(method="POST",action="/admin/manageNav/add",enctype="multipart/form-data")
+                input(type="hidden",name="_id",value="#{manage._id}")
                 .row
-                    label.col-sm-2.control-label(for="projectName") 项目名
-                    .col-sm-10
-                        input#projectName.form-control(type="text",name="projectName",value="#{manage.projectName}")
-        .row
-            .form-group.col-sm-12
+                    .form-group.col-sm-12
+                        .row
+                            label.col-sm-2.control-label(for="projectName") 项目名
+                            .col-sm-10
+                                input#projectName.form-control(type="text",name="projectName",value="#{manage.projectName}")
                 .row
-                    label.col-sm-2.control-label(for="describeCn") 中文描述
-                    .col-sm-10
-                        input#describeCn.form-control(type="text",name="describeCn",value="#{manage.describeCn}")
-        .row
-            .form-group.col-sm-12
+                    .form-group.col-sm-12
+                        .row
+                            label.col-sm-2.control-label(for="describeCn") 中文描述
+                            .col-sm-10
+                                input#describeCn.form-control(type="text",name="describeCn",value="#{manage.describeCn}")
                 .row
-                    label.col-sm-2.control-label(for="describeEn") 英文描述
-                    .col-sm-10
-                        input#describeEn.form-control(type="text",name="describeEn",value="#{manage.describeEn}")
-        .row
-            .form-group.col-sm-12
+                    .form-group.col-sm-12
+                        .row
+                            label.col-sm-2.control-label(for="describeEn") 英文描述
+                            .col-sm-10
+                                input#describeEn.form-control(type="text",name="describeEn",value="#{manage.describeEn}")
                 .row
-                    label.col-sm-2.control-label(for="link") 超链接
-                    .col-sm-10
-                        input#link.form-control(type="text",name="link",value="#{manage.link}")
-        .row
-            .form-group.col-sm-12
+                    .form-group.col-sm-12
+                        .row
+                            label.col-sm-2.control-label(for="link") 超链接
+                            .col-sm-10
+                                input#link.form-control(type="text",name="link",value="#{manage.link}")
                 .row
-                    label.col-sm-2.control-label(for="orderBy") 排序编号
-                    .col-sm-10
-                        input#orderBy.form-control(type="text",name="orderBy",value="#{manage.orderBy}")
-        .row
-            .form-group.col-sm-12
+                    .form-group.col-sm-12
+                        .row
+                            label.col-sm-2.control-label(for="orderBy") 排序编号
+                            .col-sm-10
+                                input#orderBy.form-control(type="text",name="orderBy",value="#{manage.orderBy}")
+                .row.hidden
+                    .form-group.col-sm-12
+                        .row
+                            label.col-sm-2.control-label(for="image") 上传图片
+                            .col-sm-10
+                                input#image.form-control(type="file",name="image",value="#{manage.image}",multiple="multiple")
                 .row
-                    label.col-sm-2.control-label(for="image") 上传图片
-                    .col-sm-10
-                        input#image.form-control(type="file",name="image",value="#{manage.image}",multiple="multiple")
-        .row.text-right
-            .col-sm-12
-                button.btn.btn-default#submitBtn(type="button") 提交
+                    .form-group.col-sm-12
+                        .row
+                            label.col-sm-2.control-label(for="icon") 自定义图标
+                            .col-sm-10
+                                input#icon.form-control(type="text",name="icon",placeholder="iconfont图标样式",value="#{manage.icon || ''}")
+                .row.text-right
+                    .col-sm-12
+                        button.btn.btn-default#submitBtn(type="button") 提交
 
 block script
     script.

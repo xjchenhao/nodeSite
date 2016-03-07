@@ -154,6 +154,8 @@ manageModule.getCatalogue = function () {
             });
         };
 
+
+    // 清空数组
     manageModule.catalogue.length = 0;
 
     return new Promise(function (resolve, reject) {
