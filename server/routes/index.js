@@ -27,34 +27,34 @@ module.exports = function (app) {
     });
 
     //后台登录
-    require('../routes/admin/login')(app);
+    require('./admin/login')(app);
 
     //qian360H5
     require('../routes/qian360H5/home')(app);
 
     //后台首页
-    require('../routes/admin/home')(app);
+    require('./admin/home')(app);
 
     //模块管理
-    require('../routes/admin/module')(app);
+    require('./admin/module')(app);
 
     //存储平台信息
-    require('../routes/admin/siteInfo')(app);
+    require('./admin/siteInfo')(app);
 
     //密码管理
-    require('../routes/admin/password')(app);
+    require('./admin/password')(app);
 
     //用户管理
-    require('../routes/admin/user')(app);
+    require('./admin/user')(app);
 
     //企业站路由
-    require('../routes/enterpriseSite/index')(app);
+    require('./enterpriseSite/index')(app);
 
     //项目导航
-    require('../routes/project/manageNav')(app);
+    require('./project/manageNav')(app);
 
     //项目描述
-    require('../routes/project/describe')(app);
+    require('./project/describe')(app);
 
     app.get('*', function (req, res) {
         var regNotHtml = /.*\.(jpg|png|gif|js|css|eot|woff|ttf|svg)/i;

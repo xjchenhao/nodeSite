@@ -1,4 +1,4 @@
-var errorCatch = require('../../models/errorCatch');
+var errorCatch = require('../../middleware/errorCatch');
 
 var adminUser = require('../../models/adminUser');
 var moment = require('moment');

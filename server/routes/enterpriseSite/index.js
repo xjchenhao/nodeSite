@@ -1,4 +1,4 @@
-var errorCatch = require('../../models/errorCatch');//错误捕捉
+var errorCatch = require('../../middleware/errorCatch');//错误捕捉
 
 var newsModule = require('../../models/enterprise/news'); //新闻发布系统模块
 var manageModule = require('../../models/module');  //后台模块管理,用来做侧栏的导航

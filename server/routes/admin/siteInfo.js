@@ -1,4 +1,4 @@
-var errorCatch = require('../../models/errorCatch');
+var errorCatch = require('../../middleware/errorCatch');
 
 var manageModule = require('../../models/module');
 var siteInfo = require('../../models/siteInfo');

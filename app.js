@@ -30,7 +30,7 @@ mongoose.connection.on("open", function () {
 });
 
 //视图文件的路径
-app.set('views', path.join(__dirname, 'views/pages'));
+app.set('views', path.join(__dirname, 'server/views/pages'));
 
 //使用的模板引擎
 app.engine('jade', engines.jade);
@@ -38,10 +38,10 @@ app.engine('tpl', engines.handlebars);
 
 
 app.engine('tpl', handlebars.create({
-    layoutsDir: './views/layout',
-    partialsDir: './views/includes',
-    extname: '.tpl',
-    helpers:require('./static/qian360H5/script/module/handlebars-helper.js')
+    layoutsDir: './server/views/layout',
+    partialsDir: './server/views/includes',
+    defaultLayout: 'manage',
+    extname: '.tpl'
 }).engine);
 
 app.set('view engine', 'jade');
@@ -80,7 +80,7 @@ var accessLog = fs.createWriteStream(__dirname + '/log/access.log', {flags: 'a'}
 app.use(morgan('combined', {stream: accessLog}));
 
 //页面路由
-var routes = require('./routes');
+var routes = require('./server/routes');
 app.use(routes(app));
 
 //设置端口号
