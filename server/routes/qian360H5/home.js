@@ -1,6 +1,6 @@
-var errorCatch = require('../../models/errorCatch'),
-    pageUrl = require('../../static/qian360H5/script/page/url-map'),
-    midway = require('../../static/qian360H5/script/module/midway'),
+var errorCatch = require('../../middleware/errorCatch'),
+    pageUrl = require('../../../static/qian360H5/script/page/url-map'),
+    midway = require('../../middleware/midway'),
     request = require('request');
 
 var fs = require("fs");

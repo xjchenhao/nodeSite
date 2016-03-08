@@ -1,7 +1,7 @@
 var request = require('request'),
     _ = require('underscore');
 
-var errorCatch = require('../../../../models/errorCatch');
+var errorCatch = require('./errorCatch');
 
 const TIMEOUT = 3000;
 
@@ -57,7 +57,7 @@ var midway = function (req, res, opts) {
 
             console.log(data);
 
-            if (!data.resultCode) {
+            if (data.resultCode !=='success') {
                 console.log(data);
                 return false;
             }
