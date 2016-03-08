@@ -1,4 +1,4 @@
-var errorCatch = require('../../models/errorCatch');
+var errorCatch = require('../../middleware/errorCatch');
 var handlebars=require('handlebars');
 
 var multiparty = require('multiparty');
