@@ -8,7 +8,7 @@ module.exports = function (req, res, err) {
 
     errObj.title = err.name;
     errObj.message = err.message;
-    errObj.more = err;
+    errObj.more = JSON.stringify(err);
 
     if (err.name === 'CastError') {
         errObj.title = '页面id错误';
