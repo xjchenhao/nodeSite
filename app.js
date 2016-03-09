@@ -6,7 +6,6 @@ var handlebars = require('express-handlebars');
 var mongoose = require('mongoose');
 var fs = require('fs');
 var engines = require('consolidate');       // 解析模板引擎支持express
-var morgan = require('morgan');             // 记录日志的模块
 
 var port = process.env.NODE_PORT || 3000;
 var app = express();
@@ -73,11 +72,8 @@ app.use(express.static(path.join(__dirname, 'static')));
 app.use(express.static(path.join(__dirname, 'upload')));
 
 //日志:访问记录
-if (!fs.existsSync(__dirname + '/log/')) {
-    fs.mkdirSync(__dirname + '/log/');
-}
-var accessLog = fs.createWriteStream(__dirname + '/log/access.log', {flags: 'a'});
-app.use(morgan('combined', {stream: accessLog}));
+var logHelper = require('./server/middleware/logHelper');
+logHelper.use(app);
 
 //页面路由
 var routes = require('./server/routes');

@@ -1,6 +1,8 @@
 var crypto = require('crypto');
 var adminUser = require('../../models/adminUser');
 
+var accessLog = require('../../middleware/logHelper').accessLog;
+
 module.exports = function (app) {
     app.route('/admin/login')
         .post(function (req, res) {
@@ -10,6 +12,9 @@ module.exports = function (app) {
 
                 //session存储用户名,根据它判断是否登录
                 req.session.loggedIn = req.body.user.name;
+
+                //日志记录登录
+                accessLog.info(req.body.user.name+'登录成功');
 
                 //session保存上次登录的ip和时间
                 req.session.lastIp=doc.meta.ip;
@@ -31,12 +36,14 @@ module.exports = function (app) {
         });
     app.route('/admin/logout')
         .get(function (req, res) {
-            for(var key in req.session){
-                if(key==='cookie'){
-                    continue;
-                }
-                delete req.session[key];
-            }
+
+            //日志记录退出
+            accessLog.info(req.session.loggedIn+'退出登录');
+
+            //删除session
+            req.session.destroy();
+
+            //跳转到登录页面
             res.redirect('/admin/login');
         });
 };
