@@ -2,7 +2,7 @@
 node_modules/
 
 #日志文件
-log/
+logs/
 
 #页面用到的工具and插件
 static/libs/
