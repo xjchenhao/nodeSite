@@ -31,9 +31,10 @@
   },
   "scripts": {
     "db-stop": "mongo admin --eval \"db.shutdownServer()\"",
-    "db-start": "mongod --dbpath=./db --port 27017 --fork --logpath=./logs/mongodb.log",
+    "db-start": "mkdir ./logs/mongodb &mongod --dbpath=./db --port 27017 --fork --logpath=./logs/mongodb/mongodb.log",
     "db": "npm run db-stop;npm run db-start",
     "server": "npm run db && forever start app.js",
+    "clean": "forever stopall && npm run db-stop",
     "forever-stopall": "forever stopall"
   },
   "repository": {

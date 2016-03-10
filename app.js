@@ -7,7 +7,9 @@ var mongoose = require('mongoose');
 var fs = require('fs');
 var engines = require('consolidate');       // 解析模板引擎支持express
 
-var port = process.env.NODE_PORT || 3000;
+// 设置端口号
+var port = process.env.NODE_PORT || process.argv[2] || 3000;
+
 var app = express();
 
 //连接本地数据库
@@ -27,6 +29,9 @@ mongoose.connection.on("error", function (error) {
 mongoose.connection.on("open", function () {
     console.log("------数据库连接成功！------");
 });
+
+//保存端口
+app.set('port', port);
 
 //视图文件的路径
 app.set('views', path.join(__dirname, 'server/views/pages'));

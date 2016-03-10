@@ -8,8 +8,8 @@ var helper = {};
 module.exports = helper;
 
 //--------------------------------------------------【创建日志目录】
-mass_fs.mkdir('./logs/access');
-mass_fs.mkdir('./logs/console');
+mass_fs.mkdirSync('./logs/access');
+mass_fs.mkdirSync('./logs/console');
 
 //--------------------------------------------------【规则配置】
 log4js.configure({

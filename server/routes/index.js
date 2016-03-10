@@ -1,9 +1,5 @@
 module.exports = function (app) {
 
-    // 判断环境
-    var env = process.env.NODE_ENV || 'develop';
-    env = env.toLowerCase();
-
     /*
      * 根据环境变量
      * 判断是否需要进行登录判断
